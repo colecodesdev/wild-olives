@@ -1,8 +1,8 @@
 import React from 'react'
-import Hero from '../components/Hero'
-import HomeCards from '../components/HomeCards'
-import JobListings from '../components/JobListings'
-import ViewAllJobs from '../components/ViewAllJobs'
+import Hero from '../components/ui/Hero'
+import HomeCards from '../components/ui/HomeCards'
+import JobListings from '../components/ui/JobListings'
+import ViewAllJobs from '../components//ui/ViewAllJobs'
 
 const HomePage = () => {
   return (
