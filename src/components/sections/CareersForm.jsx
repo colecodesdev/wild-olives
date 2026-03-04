@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useId, useState } from 'react'
 
 const inputClassName =
   'w-full border border-black/40 px-5 py-3 text-sm tracking-widest text-black/70 font-montserrat placeholder-black/40 focus:outline-none focus:border-black'
@@ -8,6 +8,7 @@ const buttonStyle =
 
 export default function CareersForm() {
   const resumeId = useId()
+  const [resumeName, setResumeName] = useState('')
 
   return (
     <form className="max-w-3xl mx-auto">
@@ -47,19 +48,42 @@ export default function CareersForm() {
       </div>
 
       <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <input id={resumeId} type="file" className="hidden" name="resume" />
 
-        <label
-          htmlFor={resumeId}
-          className={`${buttonStyle}`}
-        >
-          + Resume
-        </label>
+  <div className="flex items-center gap-4">
 
-        <button type="submit" className={`${buttonStyle}`}>
-          Submit Application
-        </button>
-      </div>
+      <input
+        id={resumeId}
+        type="file"
+        accept=".pdf,.doc,.docx"
+        className="hidden"
+        name="resume"
+        onChange={(e) => {
+          if (e.target.files[0]) {
+            setResumeName(e.target.files[0].name)
+          }
+        }}
+      />
+
+      <label
+        htmlFor={resumeId}
+        className={`${buttonStyle} cursor-pointer`}
+      >
+        + Resume
+      </label>
+
+      {resumeName && (
+        <span className="text-sm text-black/60 font-montserrat tracking-widest">
+          {resumeName}
+        </span>
+      )}
+
+    </div>
+
+    <button type="submit" className={`${buttonStyle}`}>
+      Submit Application
+    </button>
+
+  </div>
     </form>
   )
 }

@@ -14,7 +14,7 @@ export default function PrivateEvents() {
             </div>
           </div>
 
-            <Divider width="w-[650px]" className='my-4'/>
+            <Divider width="w-[630px]" className='my-4'/>
 
           <div className="max-w-4xl mx-auto text-md tracking-widest leading-7 text-black/70 font-montserrat">
             Step into a world of exclusivity and elegance at one of the best
