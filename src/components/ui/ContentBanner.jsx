@@ -6,6 +6,7 @@ export default function ContentBanner({
   image,
   heightClass = 'h-[500px]',
   overlayClassName = 'bg-black/30',
+  backgroundClassName = '',
   logoAlt = 'Wild Olives Logo',
   logoClassName = 'h-24 w-auto',
   children,
@@ -16,6 +17,7 @@ export default function ContentBanner({
       image={image}
       heightClass={heightClass}
       overlayClassName={overlayClassName}
+      backgroundClassName={backgroundClassName}
       contentClassName={className}
     >
       <Container className="h-full flex items-center justify-center">

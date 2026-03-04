@@ -3,13 +3,13 @@ export default function ParallaxBanner({
   heightClass = 'h-[500px]',
   overlayClassName = '',
   children,
-  backgroundClassName = '',
+  backgroundClassName = 'bg-center',
   contentClassName = '',
-}) {
+}) {  
   return (
     <section className={`relative overflow-hidden ${heightClass}`}>
       <div
-        className={`absolute inset-0 bg-no-repeat bg-cover bg-center md:bg-fixed ${backgroundClassName}`}
+        className={`absolute inset-0 bg-no-repeat bg-cover md:bg-fixed ${backgroundClassName}`}
         style={{ backgroundImage: `url(${image})` }}
       />
 

@@ -30,7 +30,6 @@ export default function Navbar() {
             <NavLink to="/events" className={linkClass}>Events</NavLink>
             <NavLink to="/our-story" className={linkClass}>Our Story</NavLink>
             <NavLink to="/contact" className={linkClass}>Contact</NavLink>
-            <NavLink to="/careers" className={linkClass}>Careers</NavLink>
             <div className='pl-8'>
             <ButtonLink to="/order-online">
               Order Online

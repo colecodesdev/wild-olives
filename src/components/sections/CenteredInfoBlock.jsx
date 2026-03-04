@@ -13,6 +13,7 @@ export default function CenteredInfoBlock({
   primaryCta,
   middleBrand,
   bottomContent,
+  children,
 }) {
   return (
     <Section id={id} className={className}>
@@ -26,6 +27,8 @@ export default function CenteredInfoBlock({
         <Divider width={dividerWidth} className={dividerClassName} />
 
         {topContent}
+
+        {children}
 
         {primaryCta}
 

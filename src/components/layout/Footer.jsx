@@ -4,8 +4,7 @@ import Divider from '../ui/Divider'
 export default function Footer() {
   return (
     <footer className="bg-white py-20">
-      <div className="w-full px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
+      <div className="w-full px-28">
 
           {/* Top Row: lines + social */}
           <div className="flex items-center justify-center gap-8">
@@ -73,7 +72,6 @@ export default function Footer() {
                 Careers
               </NavLink>
             </div>
-          </div>
 
         </div>
       </div>

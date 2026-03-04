@@ -54,7 +54,7 @@ export default function Home() {
           </>
         }
         topContent={
-          <div className="uppercase text-lg font-light tracking-widest">
+          <div className="uppercase text-medium font-light tracking-widest">
             4771 E County Hwy 30A Unit C 103<br /> Santa Rosa Beach, FL 32459
           </div>
         }
@@ -75,7 +75,7 @@ export default function Home() {
                 <div className="text-2xl uppercase tracking-widest font-raleway">
                   Open Daily
                 </div>
-                <div className="text-lg font-light tracking-widest">4PM - 10PM</div>
+                <div className="text-medium font-light tracking-widest">4PM - 10PM</div>
               </div>
             </div>
 
@@ -86,7 +86,7 @@ export default function Home() {
         }>
       </CenteredInfoBlock>
 
-      <ContentBanner image={corks} heightClass="h-[500px]">
+      <ContentBanner image={corks} heightClass="h-[500px]" overlayClassName="bg-black/40">
         <div className="h-full flex justify-center items-center">
           <img src={corkOverlay} alt="" className="h-72 w-auto" />
         </div>
@@ -106,7 +106,6 @@ export default function Home() {
             images: [bigCheeseboard, cazcanes],
             cols: 2,
             heightClass: 'h-[600px]',
-            hiddenBelow: 'md',
           },
         ]}
       >
