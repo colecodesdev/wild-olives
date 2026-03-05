@@ -16,14 +16,15 @@ export default function Careers() {
         image={heroImg}
         heightClass="h-[520px]"
         overlayClassName="bg-black/40"
+        backgroundClassName='bg-center'
       >
         <Container>
           <PageHeroTitle title="Careers" subtitle="Wild Olives 30a" />
         </Container>
       </ContentBanner>
 
-      <CenteredInfoBlock id="work-with-us" title="Work With Us" dividerWidth="w-[520px]">
-        <p className="max-w-3xl mx-auto text-sm tracking-widest leading-7 text-black/70 font-montserrat">
+      <CenteredInfoBlock id="work-with-us" title="Work With Us" dividerWidth="w-[250px] md:w-[520px]">
+        <p className="max-w-3xl mx-6 md:mx-auto text-sm tracking-widest leading-7 text-black/70 font-montserrat">
           Be part of something special at one of the best restaurants on 30A! We’re hiring
           passionate team members who love great food, exceptional service, and a dynamic work
           environment.
@@ -46,7 +47,7 @@ export default function Careers() {
         overlayClassName="bg-black/40"
         backgroundClassName="bg-[position:40%]"
       >
-        <img src={corkOverlay} alt="" className="h-72 w-auto" />
+        <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
       </ContentBanner>
     </>
   )

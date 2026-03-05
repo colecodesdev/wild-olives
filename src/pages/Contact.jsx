@@ -25,9 +25,9 @@ export default function Contact() {
       <CenteredInfoBlock
         id="get-in-touch"
         title="Get In Touch"
-        dividerWidth="w-[520px]"
+        dividerWidth="w-[250px] md:w-[520px]"
         topContent={
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-6 md:mx-auto">
             <p className="text-sm tracking-widest leading-7 text-black/70 font-montserrat">
               Have a question, a special request, or just want to say hello? We&apos;d love to hear from you! Contact
               us today and let&apos;s make your next dining experience at Wild Olives truly unforgettable. Discover why

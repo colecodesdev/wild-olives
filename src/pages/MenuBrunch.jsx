@@ -16,11 +16,11 @@ export default function MenuDinner() {
         </Container>
       </ContentBanner>
 
-      <Section className="pt-20">
+      <Section className="pt-20 hidden md:block">
         <MenuNav />
       </Section>
 
-      <Section className="pb-20">
+      <Section className="pt-10 md:pt-0 pb-20">
         <Container className="flex items-center justify-center">
           <img
             src={brunchMenuImg}

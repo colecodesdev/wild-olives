@@ -26,9 +26,9 @@ export default function PrivateEvents() {
       <CenteredInfoBlock
         id="state-room"
         title="The State Room"
-        dividerWidth="w-[520px]"
+        dividerWidth="w-[250px] md:w-[520px]"
       >
-        <p className="max-w-3xl mx-auto text-sm tracking-widest leading-7 text-black/70 font-montserrat">
+        <p className="max-w-3xl mx-6 md:mx-auto text-sm tracking-widest leading-7 text-black/70 font-montserrat">
           Welcome to The State Room, our exclusive private dining space at Wild Olives. Hosting up
           to 32 guests, it’s the ideal venue for special occasions, corporate events, and
           celebrations. Secure your spot today and see why we’re a favorite among 30A restaurants.
@@ -51,7 +51,7 @@ export default function PrivateEvents() {
         overlayClassName="bg-black/40"
         backgroundClassName="bg-bottom"
       >
-        <img src={corkOverlay} alt="" className="h-72 w-auto" />
+        <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
       </ContentBanner>
     </>
   )

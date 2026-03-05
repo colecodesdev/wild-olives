@@ -33,7 +33,7 @@ export default function Home() {
     <>
       <ParallaxBanner
         image={crazyView}
-        heightClass="h-[calc(100vh-112px)]"
+        heightClass="h-[calc(100svh-112px)] md:h-[calc(100vh-112px)]"
         overlayClassName="bg-black/30"
       >
         <Container>
@@ -52,7 +52,7 @@ export default function Home() {
           </>
         }
         topContent={
-          <div className="uppercase text-medium font-light tracking-widest">
+          <div className="uppercase text-sm md:text-base font-light tracking-widest">
             4771 E County Hwy 30A Unit C 103<br /> Santa Rosa Beach, FL 32459
           </div>
         }
@@ -73,7 +73,8 @@ export default function Home() {
                 <div className="text-2xl uppercase tracking-widest font-raleway">
                   Open Daily
                 </div>
-                <div className="text-medium font-light tracking-widest">4PM - 10PM</div>
+                <Divider width="w-[130px]" className='my-2'/>
+                <div className="text-base font-light tracking-widest">4PM - 10PM</div>
               </div>
             </div>
 
@@ -86,7 +87,7 @@ export default function Home() {
 
       <ContentBanner image={corks} heightClass="h-[500px]" overlayClassName="bg-black/40">
         <div className="h-full flex justify-center items-center">
-          <img src={corkOverlay} alt="" className="h-72 w-auto" />
+          <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
         </div>
       </ContentBanner>
 
@@ -98,12 +99,10 @@ export default function Home() {
           {
             images: [cheers, chablis, cheersNew],
             cols: 3,
-            heightClass: 'h-[600px]',
           },
           {
             images: [bigCheeseboard, cazcanes],
             cols: 2,
-            heightClass: 'h-[600px]',
           },
         ]}
       >
@@ -111,25 +110,26 @@ export default function Home() {
 
       <SplitFeature
         id="stay-wild"
+        mobileMedia="hide"
         media={
           <ImageTile
             src={chrisAndSlayde}
-            className="h-[600px] hidden md:block rounded-r-sm"
+            className="h-[600px] rounded-r-sm"
             zoom={false}
           />
         }
       >
-        <div className="text-center px-28">
+        <div className="text-center px-6 md:px-28">
           <Heading
             as="h2"
-            className="font-raleway uppercase tracking-[1rem] text-4xl md:text-5xl text-center pl-[1rem]"
+            className="font-raleway uppercase tracking-[1rem] text-2xl md:text-5xl text-center pl-[1rem]"
           >
             Stay Wild
           </Heading>
 
-          <Divider className="my-4" width="w-[420px]" />
+          <Divider className="my-4" width="w-[250px] md:w-[400px]" />
 
-          <p className="mb-7 px-24 text-md tracking-widest leading-7 text-black/70 font-montserrat">
+          <p className="mb-7 px-6 md:px-24 text-sm md:text-md tracking-widest leading-7 text-black/70 font-montserrat">
             Chef Chris Trovas brings you Wild Olives Bistro on 30a. Everything from our wine selection, cocktails, and ambiance will remind you of your favorite old-world travels and the updated amenities of the new world. We can’t wait to welcome you into our kitchen. Wild Olives has always been like entering the home of the Trovas family. Think of this as the same homey, familial experience, with a renovation!
           </p>
 
@@ -137,7 +137,7 @@ export default function Home() {
             Our Story
           </ButtonLink>
 
-          <img src={logo} alt="Wild Olives Logo" className="h-24 w-auto mx-auto" />
+          <img src={logo} alt="Wild Olives Logo" className="h-16 md:h-24 w-auto mx-auto" />
         </div>
       </SplitFeature>
 

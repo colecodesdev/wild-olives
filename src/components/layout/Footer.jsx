@@ -4,7 +4,7 @@ import Divider from '../ui/Divider'
 export default function Footer() {
   return (
     <footer className="bg-white py-20">
-      <div className="w-full px-28">
+      <div className="w-full px-6 md:px-28">
 
           {/* Top Row: lines + social */}
           <div className="flex items-center justify-center gap-8">
@@ -35,7 +35,7 @@ export default function Footer() {
 
           {/* Bottom Row: left info + right links */}
           <div className="mt-10 flex flex-col md:flex-row md:items-start md:justify-between gap-10">
-            <div className="text-left">
+            <div className="text-center md:text-left">
               <div className="text-2xl uppercase font-raleway tracking-widest font-medium">
                 Wild Olives 30a
               </div>
@@ -50,7 +50,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="text-left md:text-right uppercase font-raleway tracking-widest font-medium text-sm space-y-3">
+            <div className="text-left md:text-right uppercase font-raleway tracking-widest font-medium text-sm space-y-3 hidden md:block">
               <NavLink
                 to="/reservations"
                 className="text-black hover:text-gray-600 transition-colors duration-200 block"

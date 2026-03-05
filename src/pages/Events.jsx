@@ -38,7 +38,7 @@ export default function Events() {
 
       <CenteredInfoBlock
         id="whats-happening"
-        className="py-20"
+        className="py-20 px-6"
         title={
           <>
             WHAT&apos;S
@@ -46,7 +46,7 @@ export default function Events() {
             HAPPENING
           </>
         }
-        dividerWidth="w-[450px]"
+        dividerWidth="w-[250px] md:w-[450px]"
         dividerClassName="my-6"
         topContent={
           <>
@@ -71,14 +71,16 @@ export default function Events() {
         }
       />
 
+      <div id='ContentBanner' className='hidden md:block'>
       <ContentBanner
         image={bottlesStatue}
         heightClass="h-[520px]"
         overlayClassName="bg-black/40"
         backgroundClassName="bg-top"
       >
-        <img src={corkOverlay} alt="" className="h-72 w-auto" />
+        <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
       </ContentBanner>
+      </div>
 
       <SplitFeature
         id="fine-wine-friday"
@@ -88,7 +90,7 @@ export default function Events() {
           <img
             src={jazzFest}
             alt="Fine Wine Friday"
-            className="w-auto h-[720px] object-cover"
+            className="px-6 md:px-0 w-auto h-[450px] md:h-[720px] object-cover"
           />
         }
       >
@@ -154,7 +156,7 @@ export default function Events() {
         </div>
       </SplitFeature>
 
-      <div className="flex items-center justify-center gap-6">
+      <div className="flex items-center justify-center gap-6 px-6 md:px-0">
         <div className="flex-1 border-t border-black max-w-[420px]" />
           <img src={logo} alt="Wild Olives Logo" className="h-16 w-auto" />
         <div className="flex-1 border-t border-black max-w-[420px]" />
@@ -168,7 +170,7 @@ export default function Events() {
           <img
             src={bingo}
             alt="Music Bingo Wednesdays"
-            className="w-auto h-[720px] object-cover"
+            className="px-6 md:px-0 w-auto h-[450px] md:h-[720px] object-cover"
           />
         }
       >
@@ -218,17 +220,14 @@ export default function Events() {
           {
             images: [cheeseboardSide, bottlesOnIce, corkName],
             cols: 3,
-            heightClass: 'h-[600px]',
           },
           {
             images: [grapesBox, cheeseboardOliveHoney],
             cols: 2,
-            heightClass: 'h-[600px]',
           },
           {
             images: [redWine, momWineDinner, appetizers],
             cols: 3,
-            heightClass: 'h-[600px]',
           },
         ]}
       >

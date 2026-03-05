@@ -14,7 +14,7 @@ export default function Gallery({
           const {
             images = [],
             cols = 3,
-            heightClass = 'h-[600px]',
+            heightClass = 'md:h-[600px]',
             gapClass = 'gap-2',
             hiddenBelow = null,
             className: rowClassName = '',
@@ -24,12 +24,12 @@ export default function Gallery({
             cols === 1
               ? 'grid-cols-1'
               : cols === 2
-              ? 'md:grid-cols-2'
+              ? 'grid-cols-1 md:grid-cols-2'
               : cols === 3
-              ? 'md:grid-cols-3'
+              ? 'grid-cols-1 md:grid-cols-3'
               : cols === 4
-              ? 'md:grid-cols-4'
-              : 'md:grid-cols-3'
+              ? 'grid-cols-1 md:grid-cols-4'
+              : 'grid-cols-1 md:grid-cols-3'
 
           const visibilityClass = hiddenBelow
             ? `hidden ${hiddenBelow}:grid`
@@ -43,7 +43,7 @@ export default function Gallery({
               } ${rowClassName}`}
             >
               {images.map((src, i) => (
-                <ImageTile key={i} src={src} />
+                <ImageTile key={i} src={src} className="h-[320px] md:h-full" />
               ))}
             </Grid>
           )

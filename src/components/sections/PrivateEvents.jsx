@@ -9,14 +9,14 @@ export default function PrivateEvents() {
       <Container>
         <div className="text-center">
           <div className="flex items-center justify-center gap-6">
-            <div className="font-raleway uppercase tracking-[1rem] text-4xl md:text-5xl text-center pl-[1rem]">
+            <div className="font-raleway uppercase tracking-[1rem] text-2xl md:text-5xl text-center pl-[1rem]">
               Private Events
             </div>
           </div>
 
-            <Divider width="w-[630px]" className='my-4'/>
+            <Divider width="w-[250px] md:w-[630px]" className='my-4'/>
 
-          <div className="max-w-4xl mx-auto text-md tracking-widest leading-7 text-black/70 font-montserrat">
+          <div className="max-w-4xl mx-6 md:mx-auto text-sm md:text-md tracking-widest leading-7 text-black/70 font-montserrat">
             Step into a world of exclusivity and elegance at one of the best
             restaurants on 30A. Our private dining room offers the perfect blend
             of intimacy and luxury, where every meal becomes a masterpiece and

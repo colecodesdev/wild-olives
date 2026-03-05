@@ -16,16 +16,16 @@ export default function MenuDessert() {
         </Container>
       </ContentBanner>
 
-      <Section className="pt-20">
+      <Section className="pt-20 hidden md:block">
         <MenuNav />
       </Section>
 
-      <Section className="pb-20">
+      <Section className="pt-10 md:pt-0 pb-20">
         <Container className="flex items-center justify-center">
           <img
             src={dessertMenuImg}
             alt="Dessert Menu"
-            className="w-auto max-w-5xl h-full"
+            className="w-full md:w-auto max-w-5xl h-auto md:h-full"
             loading="lazy"
           />
         </Container>

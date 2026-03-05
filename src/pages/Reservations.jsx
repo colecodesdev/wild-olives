@@ -39,7 +39,7 @@ export default function Reservations() {
         overlayClassName="bg-black/40"
         backgroundClassName="bg-[position:40%]"
       >
-        <img src={corkOverlay} alt="" className="h-72 w-auto" />
+        <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
       </ContentBanner>
     </>
   )

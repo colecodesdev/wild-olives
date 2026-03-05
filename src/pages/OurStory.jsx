@@ -26,11 +26,11 @@ export default function OurStory() {
           <img
             src={chrisImg}
             alt="Chris Trovas"
-            className="w-full h-auto object-cover"
+            className="h-[250px] md:w-full md:h-auto object-cover px-6 md:px-0"
           />
         }
       >
-        <div className="text-center pl-28">
+        <div className="text-center px-6 md:px-0 md:pl-28">
           <Heading
             as="h2"
             className="font-raleway uppercase tracking-[1rem] text-4xl md:text-5xl text-center pl-[1rem]"
@@ -38,9 +38,9 @@ export default function OurStory() {
             Chris Trovas
           </Heading>
 
-          <Divider className="my-4" width="w-[420px]" />
+          <Divider className="my-4" width="w-[250px] md:w-[420px]" />
 
-          <p className="px-24 text-md tracking-widest leading-7 text-black/70 font-montserrat">
+          <p className="px-6 md:px-24 text-md tracking-widest leading-7 text-black/70 font-montserrat">
             With a Greek heritage and a profound respect for education instilled by his family, Chris embodies humility and a grounded perspective. His love for hunting, fishing, and cherishing moments with his grandkids reflects his appreciation for life’s simple pleasures and a genuine connection to nature. In 2005, Chris realized a dream by opening the original Wild Olives in Rosemary Beach—quickly earning its reputation as one of the best restaurants in Rosemary Beach. Over the years, he has owned and operated several successful 30A restaurants, each showcasing his dedication to quality and hospitality. Now, after fifteen successful years, he embarks on a new milestone with his latest restaurant, a culmination of lifelong dedication and a shared vision with his partner, Slayde. Chris's unwavering commitment to excellence continues to elevate the culinary industry. Join him on an extraordinary gastronomic journey marked by passion, expertise, and the pursuit of perfection—a truly unforgettable experience awaits.
           </p>
         </div>
@@ -51,8 +51,9 @@ export default function OurStory() {
         heightClass="h-[520px]"
          backgroundClassName='bg-bottom'
       >
-        <img src={corkOverlay} alt="" className="h-72 w-auto" />
+        <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
       </ContentBanner>
+      
     </>
   )
 }
