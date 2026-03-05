@@ -1,0 +1,7 @@
+{
+  "Name": "wild-olives-12345-oac",
+  "Description": "OAC for wild-olives-12345",
+  "SigningProtocol": "sigv4",
+  "SigningBehavior": "always",
+  "OriginAccessControlOriginType": "s3"
+}
