@@ -2,13 +2,25 @@
 
 ## Overview
 
-Wild Olives is a modern rebuild of the Wild Olives restaurant website, originally implemented on Wix. The goal of this project was to recreate the site as a maintainable, component-driven React application while preserving the visual structure and content of the live site.
+Wild Olives is a modern rebuild of the Wild Olives restaurant website originally implemented on Wix. The goal of this project was to recreate the site as a maintainable, component-driven React application while preserving the visual structure and content of the original site.
 
 The application is built as a single-page React application using Vite and Tailwind CSS, with client-side routing handled by React Router. The frontend architecture emphasizes reusable layout primitives, composable section components, and responsive behavior across mobile and desktop devices.
 
 The finished site is deployed as a static application using Amazon S3 and CloudFront. The infrastructure intentionally remains minimal, avoiding any backend services or server-side runtime, and focuses on clean static hosting architecture suitable for modern frontend deployments.
 
 This project demonstrates frontend architecture design, component-driven UI development, responsive layout engineering, and cost-efficient AWS static hosting.
+
+---
+
+## Live Preview
+
+Production URL:
+
+https://d6uiwxps2u5ue.cloudfront.net
+
+<p align="center">
+  <img src="docs/app-screenshot.png" width="800" alt="screenshot of wild olives website">
+</p>
 
 ---
 
