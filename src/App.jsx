@@ -15,6 +15,7 @@ import Contact from './pages/Contact'
 import Careers from './pages/Careers'
 import NotFound from './pages/NotFound'
 import PrivateEvents from './pages/PrivateEvents'
+import BusinessClosed from './pages/BusinessClosed'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
       <Route path="contact" element={<Contact />} />
       <Route path="careers" element={<Careers />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="closed" element={<BusinessClosed />} />
     </Route>
   )
 )

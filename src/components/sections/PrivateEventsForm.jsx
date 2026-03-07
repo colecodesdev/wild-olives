@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import ButtonLink from '../ui/ButtonLink'
 
 const months = [
   'January','February','March','April','May','June',
@@ -192,12 +193,7 @@ export default function PrivateEventsForm({
         </div>
       </div>
 
-      <button
-        type="submit"
-        className={`mt-10 ${buttonStyle}`}
-      >
-        Submit
-      </button>
+      <ButtonLink to="/closed" className='mt-6'>Submit Form</ButtonLink>
     </form>
   )
 }

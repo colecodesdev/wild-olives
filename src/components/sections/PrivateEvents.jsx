@@ -24,7 +24,7 @@ export default function PrivateEvents() {
           </div>
 
           <div className="mt-8">
-            <ButtonLink to="/events" className="px-10 py-3">
+            <ButtonLink to="/private-events" className="px-10 py-3">
               Book Event
             </ButtonLink>
           </div>

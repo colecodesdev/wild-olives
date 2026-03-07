@@ -149,7 +149,7 @@ export default function Events() {
             Ticket prices $6 tax & fees added
           </p>
 
-          <ButtonLink to="/tickets" className="mt-8">
+          <ButtonLink to="/closed" className="mt-8">
             Tickets
           </ButtonLink>
 

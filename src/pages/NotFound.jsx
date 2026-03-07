@@ -5,7 +5,7 @@ import ButtonLink from '../components/ui/ButtonLink'
 
 export default function NotFound() {
   const navigate = useNavigate()
-
+  
   return (
     <section className="py-32">
       <Container className="text-center">
@@ -34,7 +34,7 @@ export default function NotFound() {
           </button>
 
           <ButtonLink to="/">
-            Home
+            Back Home
           </ButtonLink>
 
         </div>

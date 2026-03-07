@@ -1,4 +1,5 @@
 import { useId, useState } from 'react'
+import ButtonLink from '../ui/ButtonLink'
 
 const inputClassName =
   'w-full border border-black/40 px-5 py-3 text-sm tracking-widest text-black/70 font-montserrat placeholder-black/40 focus:outline-none focus:border-black'
@@ -79,9 +80,7 @@ export default function CareersForm() {
 
     </div>
 
-    <button type="submit" className={`${buttonStyle}`}>
-      Submit Application
-    </button>
+    <ButtonLink to="/closed">Submit Application</ButtonLink>
 
   </div>
     </form>

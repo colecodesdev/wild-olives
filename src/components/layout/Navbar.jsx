@@ -54,7 +54,7 @@ export default function Navbar() {
             <NavLink to="/our-story" className={linkClass}>Our Story</NavLink>
             <NavLink to="/contact" className={linkClass}>Contact</NavLink>
             <div className="pl-8">
-              <ButtonLink to="/order-online">
+              <ButtonLink to="/closed">
                 Order Online
               </ButtonLink>
             </div>
