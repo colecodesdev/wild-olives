@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ButtonLink from '../ui/ButtonLink'
 
 const months = [
   'January','February','March','April','May','June',
@@ -187,12 +188,9 @@ export default function PrivateEventsForm({
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="inline-block p-3 px-4 text-white bg-black hover:bg-gray-800 rounded-sm uppercase font-semibold tracking-widest mt-6"
-      >
+      <ButtonLink type="submit" className="mt-6">
         Submit Form
-      </button>
+      </ButtonLink>
     </form>
   )
 }

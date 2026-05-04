@@ -3,6 +3,7 @@ import Heading from '../components/ui/Heading'
 import Divider from '../components/ui/Divider'
 import ButtonLink from '../components/ui/ButtonLink'
 import ImageTile from '../components/ui/ImageTile'
+import LogoDivider from '../components/ui/LogoDivider'
 import logo from '../assets/logos/logo.png'
 import crazyView from '../assets/images/home/crazy-view.jpg'
 import cheers from '../assets/images/home/cheers.jpg'
@@ -17,16 +18,17 @@ import fallHours from '../assets/images/home/fall-hours.jpg'
 import bottleRack from '../assets/images/home/bottle-rack.jpg'
 import ParallaxBanner from '../components/ui/ParallaxBanner'
 import corks from '../assets/images/home/corks_unedited.jpg'
-import corkOverlay from '../assets/images/home/cork-overlay.webp'
 import liquorBg from '../assets/images/home/liquor-wall.jpg'
 import cazcanes from '../assets/images/home/cazcanes.jpg'
 import PrivateEvents from '../components/sections/PrivateEvents'
 import HeroTitle from '../components/ui/HeroTitle'
 import ContentBanner from '../components/ui/ContentBanner'
+import CorkBanner from '../components/sections/CorkBanner'
 import SplitFeature from '../components/sections/SplitFeature'
 import Gallery from '../components/sections/Gallery'
 import SocialGrid from '../components/sections/SocialGrid'
 import CenteredInfoBlock from '../components/sections/CenteredInfoBlock'
+import { sectionTitleClass, proseClass } from '../lib/typography'
 
 export default function Home() {
   return (
@@ -57,15 +59,7 @@ export default function Home() {
           </div>
         }
         primaryCta={<ButtonLink to="/reservations" className="mt-6">Reservations</ButtonLink>}
-        middleBrand={
-          <div className="flex items-center justify-center gap-6 my-16">
-            <div className="flex-1 border-t border-black max-w-[300px]" />
-
-            <img src={logo} alt="Wild Olives Logo" className="h-16 w-auto" />
-
-            <div className="flex-1 border-t border-black max-w-[300px]" />
-          </div>
-        }
+        middleBrand={<LogoDivider />}
         bottomContent={
           <>
             <div className="flex justify-center space-x-20">
@@ -85,11 +79,7 @@ export default function Home() {
         }>
       </CenteredInfoBlock>
 
-      <ContentBanner image={corks} heightClass="h-[500px]" overlayClassName="bg-black/40">
-        <div className="h-full flex justify-center items-center">
-          <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
-        </div>
-      </ContentBanner>
+      <CorkBanner image={corks} heightClass="h-[500px]" />
 
       <PrivateEvents />
 
@@ -120,16 +110,13 @@ export default function Home() {
         }
       >
         <div className="text-center px-6 md:px-28">
-          <Heading
-            as="h2"
-            className="font-raleway uppercase tracking-[1rem] text-2xl md:text-5xl text-center pl-[1rem]"
-          >
+          <Heading as="h2" className={sectionTitleClass}>
             Stay Wild
           </Heading>
 
           <Divider className="my-4" width="w-[250px] md:w-[400px]" />
 
-          <p className="mb-7 px-6 md:px-24 text-sm md:text-md tracking-widest leading-7 text-black/70 font-montserrat">
+          <p className={`mb-7 px-6 md:px-24 md:text-md ${proseClass}`}>
             Chef Chris Trovas brings you Wild Olives Bistro on 30a. Everything from our wine selection, cocktails, and ambiance will remind you of your favorite old-world travels and the updated amenities of the new world. We can’t wait to welcome you into our kitchen. Wild Olives has always been like entering the home of the Trovas family. Think of this as the same homey, familial experience, with a renovation!
           </p>
 

@@ -3,19 +3,19 @@ import Divider from '../components/ui/Divider'
 import Heading from '../components/ui/Heading'
 import PageHeroTitle from '../components/ui/PageHeroTitle'
 import ContentBanner from '../components/ui/ContentBanner'
+import CorkBanner from '../components/sections/CorkBanner'
 import SplitFeature from '../components/sections/SplitFeature'
 
 import heroImg from '../assets/images/our-story/old-wildolives.jpg'
 import chrisImg from '../assets/images/our-story/chris-pic.webp'
 import bannerImg from '../assets/images/our-story/store-banner.jpg'
-import corkOverlay from '../assets/images/home/cork-overlay.webp'
 
 export default function OurStory() {
   return (
     <>
       <ContentBanner image={heroImg} heightClass="h-[520px]" overlayClassName="bg-black/40" backgroundClassName='bg-bottom'>
         <Container>
-          <PageHeroTitle title="Our Story" subtitle="Wild Olives 30a" />
+          <PageHeroTitle title="Our Story" />
         </Container>
       </ContentBanner>
 
@@ -46,14 +46,7 @@ export default function OurStory() {
         </div>
       </SplitFeature>
 
-      <ContentBanner
-        image={bannerImg}
-        heightClass="h-[520px]"
-         backgroundClassName='bg-bottom'
-      >
-        <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
-      </ContentBanner>
-      
+      <CorkBanner image={bannerImg} backgroundClassName="bg-bottom" />
     </>
   )
 }

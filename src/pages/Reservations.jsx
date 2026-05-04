@@ -2,11 +2,11 @@ import Container from '../components/ui/Container'
 import ContentBanner from '../components/ui/ContentBanner'
 import PageHeroTitle from '../components/ui/PageHeroTitle'
 import Section from '../components/ui/Section'
+import CorkBanner from '../components/sections/CorkBanner'
 import OpenTableEmbed from '../components/sections/OpenTableEmbed'
 
 import reservationsHero from '../assets/images/reservations/reservations-hero.jpg'
 import table from '../assets/images/reservations/banner.jpg'
-import corkOverlay from '../assets/images/home/cork-overlay.webp'
 
 export default function Reservations() {
   return (
@@ -17,7 +17,7 @@ export default function Reservations() {
         overlayClassName="bg-black/40"
       >
         <Container>
-          <PageHeroTitle title="Reservations" subtitle="Wild Olives 30a" />
+          <PageHeroTitle title="Reservations" />
         </Container>
       </ContentBanner>
 
@@ -33,14 +33,7 @@ export default function Reservations() {
         </Container>
       </Section>
 
-      <ContentBanner
-        image={table}
-        heightClass="h-[520px]"
-        overlayClassName="bg-black/40"
-        backgroundClassName="bg-[position:40%]"
-      >
-        <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
-      </ContentBanner>
+      <CorkBanner image={table} backgroundClassName="bg-[position:40%]" />
     </>
   )
 }

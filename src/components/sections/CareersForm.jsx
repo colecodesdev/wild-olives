@@ -1,11 +1,8 @@
 import { useId, useState } from 'react'
-import ButtonLink from '../ui/ButtonLink'
+import ButtonLink, { buttonLinkBase } from '../ui/ButtonLink'
 
 const inputClassName =
   'w-full border border-black/40 px-5 py-3 text-sm tracking-widest text-black/70 font-montserrat placeholder-black/40 focus:outline-none focus:border-black'
-
-const uploadLabelStyle =
-  'inline-block p-3 px-4 text-white bg-black hover:bg-gray-800 rounded-sm uppercase font-semibold tracking-widest'
 
 const fields = [
   { name: 'firstName', label: 'First name', type: 'text', required: true, autoComplete: 'given-name' },
@@ -88,7 +85,7 @@ export default function CareersForm() {
 
           <label
             htmlFor={resumeId}
-            className={`${uploadLabelStyle} cursor-pointer`}
+            className={`${buttonLinkBase} cursor-pointer`}
           >
             + Resume
           </label>

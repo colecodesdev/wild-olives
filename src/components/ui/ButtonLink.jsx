@@ -1,8 +1,18 @@
 import { Link } from 'react-router-dom'
 
-export default function ButtonLink({ to, href, className = '', children }) {
-  const base =
-    'inline-block p-3 px-4 text-white bg-black hover:bg-gray-800 rounded-sm uppercase font-semibold tracking-widest'
+export const buttonLinkBase =
+  'inline-block p-3 px-4 text-white bg-black hover:bg-gray-800 rounded-sm uppercase font-semibold tracking-widest'
+
+export default function ButtonLink({ to, href, type, onClick, className = '', children }) {
+  const cls = `${buttonLinkBase} ${className}`
+
+  if (type === 'submit' || (!to && !href)) {
+    return (
+      <button type={type ?? 'button'} onClick={onClick} className={cls}>
+        {children}
+      </button>
+    )
+  }
 
   if (href) {
     return (
@@ -10,7 +20,8 @@ export default function ButtonLink({ to, href, className = '', children }) {
         href={href}
         target="_blank"
         rel="noreferrer"
-        className={`${base} ${className}`}
+        onClick={onClick}
+        className={cls}
       >
         {children}
       </a>
@@ -18,7 +29,7 @@ export default function ButtonLink({ to, href, className = '', children }) {
   }
 
   return (
-    <Link to={to} className={`${base} ${className}`}>
+    <Link to={to} onClick={onClick} className={cls}>
       {children}
     </Link>
   )

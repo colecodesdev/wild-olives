@@ -2,7 +2,7 @@ import Divider from './Divider'
 
 export default function PageHeroTitle({
   title,
-  subtitle,
+  subtitle = 'Wild Olives 30a',
   className = '',
   dividerWidth = 'w-[250px] md:w-[400px]',
 }) {

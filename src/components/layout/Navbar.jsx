@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import logo from '../../assets/logos/logo.png'
 import ButtonLink from '../ui/ButtonLink'
+import { navLinkClass } from '../../lib/navLinkClass'
+import { MENU_LINKS_MOBILE } from '../../data/menuLinks'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,11 +28,6 @@ export default function Navbar() {
     }
   }, [isOpen])
 
-  const linkClass = ({ isActive }) =>
-    isActive
-      ? 'text-black font-semibold border-b-2 border-black pb-1'
-      : 'text-black hover:text-gray-600'
-
   const mobileLinkClass = ({ isActive }) =>
     isActive ? 'text-black font-semibold' : 'text-black'
 
@@ -48,11 +45,11 @@ export default function Navbar() {
           </NavLink>
 
           <div className="hidden md:flex items-center space-x-10 uppercase font-medium tracking-widest text-sm">
-            <NavLink to="/menu" className={linkClass}>Menu</NavLink>
-            <NavLink to="/reservations" className={linkClass}>Reservations</NavLink>
-            <NavLink to="/events" className={linkClass}>Events</NavLink>
-            <NavLink to="/our-story" className={linkClass}>Our Story</NavLink>
-            <NavLink to="/contact" className={linkClass}>Contact</NavLink>
+            <NavLink to="/menu" className={navLinkClass}>Menu</NavLink>
+            <NavLink to="/reservations" className={navLinkClass}>Reservations</NavLink>
+            <NavLink to="/events" className={navLinkClass}>Events</NavLink>
+            <NavLink to="/our-story" className={navLinkClass}>Our Story</NavLink>
+            <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
             <div className="pl-8">
               <ButtonLink to="/closed">
                 Order Online
@@ -147,24 +144,16 @@ export default function Navbar() {
 
                   {isMenuOpen ? (
                     <div className="mt-4 flex flex-col gap-3">
-                      <NavLink to="/menu/dinner" className={mobileLinkClass} onClick={closeMenu}>
-                        <div className="text-center tracking-widest text-base">Dinner</div>
-                      </NavLink>
-                      <NavLink to="/menu/brunch" className={mobileLinkClass} onClick={closeMenu}>
-                        <div className="text-center tracking-widest text-base">Brunch</div>
-                      </NavLink>
-                      <NavLink to="/menu/happy-hour" className={mobileLinkClass} onClick={closeMenu}>
-                        <div className="text-center tracking-widest text-base">Happy Hour</div>
-                      </NavLink>
-                      <NavLink to="/menu/cocktails" className={mobileLinkClass} onClick={closeMenu}>
-                        <div className="text-center tracking-widest text-base">Cocktails</div>
-                      </NavLink>
-                      <NavLink to="/menu/wine" className={mobileLinkClass} onClick={closeMenu}>
-                        <div className="text-center tracking-widest text-base">Wine</div>
-                      </NavLink>
-                      <NavLink to="/menu/dessert" className={mobileLinkClass} onClick={closeMenu}>
-                        <div className="text-center tracking-widest text-base">Dessert</div>
-                      </NavLink>
+                      {MENU_LINKS_MOBILE.map(({ path, label }) => (
+                        <NavLink
+                          key={path}
+                          to={path}
+                          className={mobileLinkClass}
+                          onClick={closeMenu}
+                        >
+                          <div className="text-center tracking-widest text-base">{label}</div>
+                        </NavLink>
+                      ))}
                     </div>
                   ) : null}
                 </div>

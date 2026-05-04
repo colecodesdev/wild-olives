@@ -3,12 +3,13 @@ import Heading from '../ui/Heading'
 import Divider from '../ui/Divider'
 import Grid from '../ui/Grid'
 import ImageTile from '../ui/ImageTile'
+import { sectionTitleClass } from '../../lib/typography'
 
 export default function SocialGrid({
   id,
   className = 'pt-20',
   title = 'Follow Us',
-  titleClassName = 'font-raleway uppercase tracking-[1rem] text-2xl md:text-5xl text-center pl-[1rem]',
+  titleClassName = sectionTitleClass,
   dividerWidth = 'w-[250px] md:w-[430px]',
   profileUrl,
   handleText,

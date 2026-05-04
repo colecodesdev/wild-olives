@@ -1,14 +1,15 @@
 import Container from '../components/ui/Container'
 import PageHeroTitle from '../components/ui/PageHeroTitle'
 import ContentBanner from '../components/ui/ContentBanner'
+import LogoDivider from '../components/ui/LogoDivider'
 import CenteredInfoBlock from '../components/sections/CenteredInfoBlock'
+import CorkBanner from '../components/sections/CorkBanner'
 import ButtonLink from '../components/ui/ButtonLink'
 import Divider from '../components/ui/Divider'
 import SplitFeature from '../components/sections/SplitFeature'
 import Gallery from '../components/sections/Gallery'
 
 import corksAndRoses from '../assets/images/events/corks-and-roses.JPG'
-import corkOverlay from '../assets/images/home/cork-overlay.webp'
 import bottlesStatue from '../assets/images/events/bottles-statue.JPG'
 import appetizers from '../assets/images/events/appetizers.JPG'
 import bottlesOnIce from '../assets/images/events/bottles-on-ice.JPG'
@@ -20,7 +21,7 @@ import jazzFest from '../assets/images/events/jazzfesty.jpg'
 import bingo from '../assets/images/events/bingo.jpeg'
 import momWineDinner from '../assets/images/events/mom-wine-dinner.JPG'
 import redWine from '../assets/images/events/red-wine.JPG'
-import logo from '../assets/logos/logo.png'
+import { proseClass } from '../lib/typography'
 
 export default function Events() {
   return (
@@ -32,7 +33,7 @@ export default function Events() {
         backgroundClassName="bg-bottom"
       >
         <Container>
-          <PageHeroTitle title="Events" subtitle="Wild Olives 30a" />
+          <PageHeroTitle title="Events" />
         </Container>
       </ContentBanner>
 
@@ -51,7 +52,7 @@ export default function Events() {
         topContent={
           <>
 
-            <p className="mx-auto max-w-[680px] text-sm tracking-widest leading-7 text-black/70 font-montserrat">
+            <p className={`mx-auto max-w-[680px] ${proseClass}`}>
               Looking for something fun to do? Wild Olives hosts exciting events all month long.
               From themed dinners to weekly gatherings, there’s always something happening.
               Mark your calendar and join the fun — scroll down for details!
@@ -72,14 +73,7 @@ export default function Events() {
       />
 
       <div className='hidden md:block'>
-        <ContentBanner
-          image={bottlesStatue}
-          heightClass="h-[520px]"
-          overlayClassName="bg-black/40"
-          backgroundClassName="bg-top"
-        >
-          <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
-        </ContentBanner>
+        <CorkBanner image={bottlesStatue} backgroundClassName="bg-top" />
       </div>
 
       <SplitFeature
@@ -109,7 +103,7 @@ export default function Events() {
 
           <Divider width="w-[60px]" className="mx-auto my-6 border-black/40" />
 
-          <p className="text-sm tracking-widest leading-7 text-black/70 font-montserrat">
+          <p className={proseClass}>
             Get ready for an evening of soulful jazz as <strong>The Reid Murphy Quartet</strong>
             lights up Wild Olives as part of the SOWAL Jazz Fest! This is one of the standout
             nights of the festival — an intimate venue, fantastic music, and vibes that only a
@@ -156,11 +150,7 @@ export default function Events() {
         </div>
       </SplitFeature>
 
-      <div className="flex items-center justify-center gap-6 px-6 md:px-0">
-        <div className="flex-1 border-t border-black max-w-[420px]" />
-          <img src={logo} alt="Wild Olives Logo" className="h-16 w-auto" />
-        <div className="flex-1 border-t border-black max-w-[420px]" />
-      </div>
+      <LogoDivider maxWidth="max-w-[420px]" className="px-6 md:px-0" />
 
       <SplitFeature
         id="music-bingo"
@@ -186,7 +176,7 @@ export default function Events() {
 
           <Divider width="w-[60px]" className="mx-auto my-6 border-black/40" />
 
-          <p className="text-sm tracking-widest leading-7 text-black/70 font-montserrat">
+          <p className={proseClass}>
             Prepare for fun-filled evenings of music and friendly competition at <strong>Steve's Music Bingo</strong>,
             happening <strong>EVERY WEDNESDAY</strong> at <strong>Wild Olives</strong>! It's the perfect midweek
             escape — great tunes, lively vibes, and plenty of chances to win prizes while enjoying your favorite songs.

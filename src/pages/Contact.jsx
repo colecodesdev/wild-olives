@@ -5,6 +5,7 @@ import CenteredInfoBlock from '../components/sections/CenteredInfoBlock'
 import ButtonLink from '../components/ui/ButtonLink'
 import Divider from '../components/ui/Divider'
 import GoogleMapEmbed from '../components/sections/GoogleMapEmbed'
+import { proseClass } from '../lib/typography'
 
 import contactHero from '../assets/images/contact/contact-hero.jpg'
 
@@ -18,7 +19,7 @@ export default function Contact() {
         backgroundClassName="bg-bottom"
       >
         <Container>
-          <PageHeroTitle title="Contact" subtitle="Wild Olives 30a" />
+          <PageHeroTitle title="Contact" />
         </Container>
       </ContentBanner>
 
@@ -28,7 +29,7 @@ export default function Contact() {
         dividerWidth="w-[250px] md:w-[520px]"
         topContent={
           <div className="max-w-3xl mx-6 md:mx-auto">
-            <p className="text-sm tracking-widest leading-7 text-black/70 font-montserrat">
+            <p className={proseClass}>
               Have a question, a special request, or just want to say hello? We&apos;d love to hear from you! Contact
               us today and let&apos;s make your next dining experience at Wild Olives truly unforgettable. Discover why
               we&apos;re a local favorite among 30A restaurants!

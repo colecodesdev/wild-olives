@@ -1,12 +1,13 @@
 import Section from '../ui/Section'
 import Container from '../ui/Container'
 import Divider from '../ui/Divider'
+import { sectionTitleClass } from '../../lib/typography'
 
 export default function CenteredInfoBlock({
   id,
   className = 'py-20',
   title,
-  titleClassName = 'font-raleway uppercase tracking-[1rem] text-2xl md:text-5xl text-center pl-[1rem]',
+  titleClassName = sectionTitleClass,
   dividerWidth = 'w-[250px] md:w-[380px]',
   dividerClassName = 'my-4',
   topContent,

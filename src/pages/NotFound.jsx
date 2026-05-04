@@ -1,11 +1,10 @@
-import { useNavigate } from 'react-router-dom'
 import Container from '../components/ui/Container'
 import Divider from '../components/ui/Divider'
 import ButtonLink from '../components/ui/ButtonLink'
+import BackButton from '../components/ui/BackButton'
+import { proseClass } from '../lib/typography'
 
 export default function NotFound() {
-  const navigate = useNavigate()
-  
   return (
     <section className="py-32">
       <Container className="text-center">
@@ -20,19 +19,13 @@ export default function NotFound() {
           Page Not Found
         </h2>
 
-        <p className="max-w-xl mx-auto mt-6 text-sm tracking-widest leading-7 text-black/70 font-montserrat">
+        <p className={`max-w-xl mx-auto mt-6 ${proseClass}`}>
           The page you're looking for doesn't exist or may have been moved.
         </p>
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
 
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className="inline-block p-3 px-6 text-white bg-black hover:bg-gray-800 rounded-sm uppercase font-semibold tracking-widest"
-          >
-            Previous Page
-          </button>
+          <BackButton />
 
           <ButtonLink to="/">
             Back Home
