@@ -2,6 +2,30 @@
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [],
   "permissions": {
-    "allow": []
+    "allow": [
+      "Bash(npm run dev)",
+      "Bash(npm run build)",
+      "Bash(npm run lint)",
+      "Bash(npm run preview)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm outdated:*)",
+      "Bash(npx vite:*)",
+      "Bash(git status)",
+      "Bash(git status:*)",
+      "Bash(git diff)",
+      "Bash(git diff:*)",
+      "Bash(git log)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch)",
+      "Bash(git branch:*)",
+      "Bash(git ls-files)",
+      "Bash(git ls-files:*)",
+      "Bash(git remote -v)",
+      "Bash(git rev-parse:*)",
+      "Bash(git blame:*)"
+    ]
   }
 }

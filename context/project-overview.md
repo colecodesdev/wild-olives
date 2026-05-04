@@ -1,6 +1,6 @@
-# Project Overview: {{PROJECT_NAME}}
+# Project Overview: Wild Olives
 
-> **{{ONE_LINE_PITCH}}**
+> **A static React SPA marketing site for Wild Olives, a 30A bistro, deployed to AWS S3 + CloudFront.**
 
 ---
 
@@ -10,28 +10,30 @@
 2. [Target Users](#2-target-users)
 3. [Tech Stack](#3-tech-stack)
 4. [Architecture Overview](#4-architecture-overview)
-5. [Data Models](#5-data-models)
-6. [Features](#6-features)
-7. [{{DOMAIN_OBJECTS_SECTION_NAME}}](#7-domain-objects)
-8. [UI/UX Guidelines](#8-uiux-guidelines)
-9. [Monetization](#9-monetization)
-10. [URL Structure](#10-url-structure)
-11. [{{INTEGRATIONS_SECTION_NAME}}](#11-integrations)
-12. [Key Dependencies & Links](#12-key-dependencies--links)
+5. [Features](#5-features)
+6. [Pages](#6-pages)
+7. [UI/UX Guidelines](#7-uiux-guidelines)
+8. [URL Structure](#8-url-structure)
+9. [Integrations](#9-integrations)
+10. [Intentionally Out of Scope](#10-intentionally-out-of-scope)
+11. [Key Dependencies & Links](#11-key-dependencies--links)
 
 ---
 
 ## 1. Problem & Vision
 
-{{PROBLEM_STATEMENT}}
+The original Wild Olives website was hosted on Wix. The goal of this project is to rebuild it as a maintainable, component-driven React SPA while preserving the visual structure and content of the original site, and to host it cheaply as a static site on AWS.
 
-| What | Where it ends up today |
+| What | Where it lives in this build |
 |---|---|
-| {{SCATTERED_THING_1}} | {{CURRENT_LOCATION_1}} |
-| {{SCATTERED_THING_2}} | {{CURRENT_LOCATION_2}} |
-| {{SCATTERED_THING_3}} | {{CURRENT_LOCATION_3}} |
+| Page content (menus, story, contact, hours) | Hardcoded JSX in [src/pages/](src/pages/) |
+| Layout primitives (containers, headings, dividers, buttons) | [src/components/ui/](src/components/ui/) |
+| Composite sections (galleries, split features, banners, forms) | [src/components/sections/](src/components/sections/) |
+| Site shell (nav, footer, layout) | [src/components/layout/](src/components/layout/) |
+| Static assets (images, fonts, logos) | [src/assets/](src/assets/) |
+| Routing | [src/App.jsx](src/App.jsx) (React Router v7 data router) |
 
-**{{PROJECT_NAME}}** solves this with {{ONE_SENTENCE_SOLUTION}}.
+**Wild Olives** solves this with a small, dependency-light React SPA whose only runtime is the browser.
 
 ---
 
@@ -39,9 +41,9 @@
 
 | Persona | Core Need |
 |---|---|
-| **{{PERSONA_1}}** | {{NEED_1}} |
-| **{{PERSONA_2}}** | {{NEED_2}} |
-| **{{PERSONA_3}}** | {{NEED_3}} |
+| **Diner / Visitor** | Browse menus, find hours and address, make a reservation |
+| **Event Inquirer** | Submit a private event request and view event types |
+| **Job Seeker** | View open positions and submit a careers form |
 
 ---
 
@@ -49,172 +51,276 @@
 
 | Layer | Technology |
 |---|---|
-| **Framework** | {{FRAMEWORK}} |
-| **Language** | {{LANGUAGE}} |
-| **Database** | {{DATABASE}} |
-| **ORM / DB Layer** | {{ORM}} |
-| **Auth** | {{AUTH}} |
-| **File Storage** | {{STORAGE}} |
-| **AI / ML** | {{AI_PROVIDER}} (if applicable) |
-| **CSS / Styling** | {{CSS}} |
-| **Components** | {{UI_LIBRARY}} |
-| **Caching** | {{CACHE}} |
-| **Payments** | {{PAYMENTS}} (if applicable) |
-| **Testing** | {{TEST_FRAMEWORK}} |
-| **Hosting** | {{HOSTING}} |
+| **Framework** | React 18.3 (function components + hooks) |
+| **Language** | JavaScript (JSX). No TypeScript. |
+| **Build Tool** | Vite 6 |
+| **Routing** | react-router-dom 7.1 (data router via `createBrowserRouter`) |
+| **CSS / Styling** | Tailwind CSS v3.4 + small `index.css` for base font |
+| **Components** | None (no UI library, all components are local) |
+| **Icons** | react-icons + Font Awesome 6 (loaded via CDN in [index.html](index.html)) |
+| **Toasts** | react-toastify (installed, currently unused) |
+| **Spinners** | react-spinners (installed, currently unused) |
+| **Linting** | ESLint 9 flat config + react / react-hooks / react-refresh plugins |
+| **Testing** | None |
+| **Hosting** | Amazon S3 (private bucket) behind CloudFront CDN |
 
-> **{{STACK_RULE_1_TITLE}}**: {{STACK_RULE_1_BODY}}
-> e.g., "Database rule: never use `db push`. Always create and run migrations."
+> **Static-site rule:** there is no server. All logic runs in the browser. Forms must integrate with a third-party endpoint (Formspree, AWS SES via Lambda, etc.) when they get wired up. Do not introduce a backend without explicit direction.
+
+> **Tailwind v3 rule:** this project uses Tailwind v3, which uses a JS config file ([tailwind.config.js](tailwind.config.js)) and `@tailwind base/components/utilities` directives in [src/index.css](src/index.css). Do not introduce v4 CSS-first config patterns.
 
 ---
 
 ## 4. Architecture Overview
 
 ```
-{{ASCII_ARCHITECTURE_DIAGRAM}}
+Browser
+   |
+   v
+CloudFront CDN  (HTTPS, edge cache, 403/404 -> /index.html for SPA routes)
+   |
+   v
+S3 (private bucket, OAC)  <- vite build output (dist/)
+   |
+   v
+Browser executes React SPA
+   |
+   v
+React Router (client-side) renders pages from src/pages/
+   |
+   v
+External embeds: OpenTable iframe, Google Maps iframe, Font Awesome CDN
 ```
 
-<!-- Replace with an ASCII diagram of the major components and data flow.
-     Keep it under 25 lines. Show: client, server boundaries, data stores,
-     and external services. -->
+All application logic runs client-side. There is no server runtime, database, or API.
 
 ---
 
-## 5. Data Models
-
-```{{SCHEMA_LANGUAGE}}
-// {{SCHEMA_FILE_PATH}}
-
-{{SCHEMA_PASTE_HERE}}
-```
-
-<!-- Paste the schema (Prisma, SQL DDL, types, GraphQL, etc.).
-     Keep it as the source of truth. Update when migrations land. -->
-
----
-
-## 6. Features
+## 5. Features
 
 ### Core Features (All Users)
 
-- {{FEATURE_1}}
-- {{FEATURE_2}}
-- {{FEATURE_3}}
+- Mobile-first responsive marketing site
+- Sticky desktop navbar with active-route styling
+- Full-screen mobile overlay nav with nested menu dropdown
+- Smooth scroll-to-top on route change ([src/components/layout/MainLayout.jsx](src/components/layout/MainLayout.jsx))
+- OpenTable reservation widget embed
+- Google Maps embed for location
+- Multiple menu sub-pages (Dinner, Brunch, Happy Hour, Cocktails, Wine, Dessert)
+- Image galleries and parallax banners (parallax disabled on mobile to avoid jank)
+- Private event inquiry form (UI only, no submit handler yet)
+- Careers form (UI only, no submit handler yet)
+- Custom 404 page
 
-### {{TIERED_FEATURES_SECTION}} Features (e.g., Pro / Enterprise / Admin only)
-
-- {{TIERED_FEATURE_1}}
-- {{TIERED_FEATURE_2}}
-
----
-
-## 7. Domain Objects
-
-<!-- Examples: item types, content types, resource types, entity kinds.
-     Whatever the project's primary nouns are. -->
-
-| Type | Icon | Color | {{ATTR_1}} | {{ATTR_2}} | URL Pattern |
-|---|---|---|---|---|---|
-| {{TYPE_1}} | {{ICON_1}} | {{COLOR_1}} | {{V_1_1}} | {{V_1_2}} | {{ROUTE_1}} |
-| {{TYPE_2}} | {{ICON_2}} | {{COLOR_2}} | {{V_2_1}} | {{V_2_2}} | {{ROUTE_2}} |
+There are no tiered or gated features. Every page is publicly accessible.
 
 ---
 
-## 8. UI/UX Guidelines
+## 6. Pages
+
+| Page | File | Notes |
+|---|---|---|
+| Home | [src/pages/Home.jsx](src/pages/Home.jsx) | Hero, hours, gallery, story, social grid |
+| Menu (index redirect) | redirects to `/menu/dinner` | See [src/App.jsx:24](src/App.jsx#L24) |
+| Menu Dinner | [src/pages/MenuDinner.jsx](src/pages/MenuDinner.jsx) | |
+| Menu Brunch | [src/pages/MenuBrunch.jsx](src/pages/MenuBrunch.jsx) | |
+| Menu Happy Hour | [src/pages/MenuHappyHour.jsx](src/pages/MenuHappyHour.jsx) | |
+| Menu Cocktails | [src/pages/MenuCocktails.jsx](src/pages/MenuCocktails.jsx) | |
+| Menu Wine | [src/pages/MenuWine.jsx](src/pages/MenuWine.jsx) | |
+| Menu Dessert | [src/pages/MenuDessert.jsx](src/pages/MenuDessert.jsx) | |
+| Reservations | [src/pages/Reservations.jsx](src/pages/Reservations.jsx) | OpenTable embed |
+| Events | [src/pages/Events.jsx](src/pages/Events.jsx) | |
+| Private Events | [src/pages/PrivateEvents.jsx](src/pages/PrivateEvents.jsx) | Inquiry form |
+| Our Story | [src/pages/OurStory.jsx](src/pages/OurStory.jsx) | |
+| Contact | [src/pages/Contact.jsx](src/pages/Contact.jsx) | Google Maps embed |
+| Careers | [src/pages/Careers.jsx](src/pages/Careers.jsx) | Application form |
+| Business Closed | [src/pages/BusinessClosed.jsx](src/pages/BusinessClosed.jsx) | Currently used as the "Order Online" landing |
+| 404 | [src/pages/NotFound.jsx](src/pages/NotFound.jsx) | Catch-all `path="*"` route |
+
+---
+
+## 7. UI/UX Guidelines
 
 ### Design Principles
 
-- {{PRINCIPLE_1}}
-- {{PRINCIPLE_2}}
-- {{PRINCIPLE_3}}
-- Reference designs: {{REFERENCE_LINKS}}
+- Mobile-first. Every layout starts at 375px and progressively enhances.
+- Component-first. Pages compose primitives from `src/components/ui/` and sections from `src/components/sections/`.
+- Quiet, premium aesthetic: white backgrounds, black/near-black type, generous whitespace, photographic imagery.
+- Reference design: original Wild Olives Wix site.
 
-### Screenshots
+### Typography
 
-Reference the screenshots below as a base for the {{KEY_VIEW}} UI. Use as a reference, not exact reproduction.
+Loaded via Google Fonts in [index.html](index.html):
 
-- @context/screenshots/{{SCREENSHOT_1}}
-- @context/screenshots/{{SCREENSHOT_2}}
+- **Raleway** (display, headings, uppercase wide-tracking)
+- **Montserrat** (body, default `html, body` font set in [src/index.css](src/index.css))
+- **Roboto** (declared in `tailwind.config.js` `font-sans` fallback list)
 
-### Layout
+Custom letter-spacing utilities `tracking-bigWide` (1rem) and `tracking-bigMedium` (0.5rem) are defined in [tailwind.config.js](tailwind.config.js).
+
+### Color
+
+- Primary palette: black (`#000`), white, neutral grays (Tailwind defaults).
+- Accent: `oliveBrown` = `hsl(99, 9%, 38%)` ([tailwind.config.js:19](tailwind.config.js#L19)).
+- Banner overlays: `bg-black/30` to `bg-black/40` for legibility over photography.
+
+### Layout primitives
+
+- `Container` (max-width 7xl, horizontal padding 6) [src/components/ui/Container.jsx](src/components/ui/Container.jsx)
+- `Section` thin wrapper [src/components/ui/Section.jsx](src/components/ui/Section.jsx)
+- `Heading`, `Divider`, `ButtonLink`, `ImageTile`, `Grid`, `HeroTitle`, `PageHeroTitle`
+- Banners: `ParallaxBanner`, `ContentBanner`, `Hero`
+
+### Composite sections
+
+- `SplitFeature` (two-column reversible layout)
+- `Gallery` (configurable rows of images)
+- `SocialGrid` (gallery + handle + profile link)
+- `CenteredInfoBlock` (title + dividers + centered text + CTA)
+- `MenuNav` (sub-nav for menu pages)
+- `OpenTableEmbed`, `GoogleMapEmbed`
+- `PrivateEvents`, `PrivateEventsForm`, `CareersForm`
+
+### Layout shell
 
 ```
-{{ASCII_LAYOUT_DIAGRAM}}
++-----------------------------------------------+
+|                  Navbar (sticky)              |
++-----------------------------------------------+
+|                                               |
+|              <Outlet /> (page content)        |
+|                                               |
++-----------------------------------------------+
+|                    Footer                     |
++-----------------------------------------------+
 ```
+
+### Responsive breakpoints (Tailwind defaults)
+
+- `sm` 640px, `md` 768px (primary mobile/desktop split), `lg` 1024px, `xl` 1280px, `2xl` 1536px.
 
 ### Micro-interactions
 
-- {{INTERACTION_1}}
-- {{INTERACTION_2}}
+- Smooth scroll-to-top on route change.
+- Animated hamburger -> X icon transition.
+- Mobile menu auto-expands the Menu submenu when opened on a `/menu/*` route.
+- Body scroll lock while the mobile overlay is open.
+- Parallax background-attachment limited to `md:` and up.
+
+### Screenshots
+
+The reference screenshot of the deployed site is at [docs/app-screenshot.png](docs/app-screenshot.png). The `context/screenshots/` directory is currently empty; populate it before referencing images here.
 
 ---
 
-## 9. Monetization
-
-<!-- Delete this section if not applicable. -->
-
-### Tiers
-
-| Feature | Free | {{PAID_TIER_NAME}} ({{PRICE}}) |
-|---|---|---|
-| {{FEATURE_A}} | {{FREE_LIMIT_A}} | {{PAID_LIMIT_A}} |
-| {{FEATURE_B}} | {{FREE_LIMIT_B}} | {{PAID_LIMIT_B}} |
-
-> **During development:** {{DEV_TIER_BEHAVIOR}}
-
-### Payment Integration
-
-- {{PAYMENT_DETAIL_1}}
-- {{PAYMENT_DETAIL_2}}
-
----
-
-## 10. URL Structure
+## 8. URL Structure
 
 ```
-/                          → {{ROUTE_DESCRIPTION}}
-/{{ROUTE_1}}               → {{DESCRIPTION_1}}
-/{{ROUTE_2}}/[id]          → {{DESCRIPTION_2}}
-/auth/{{AUTH_ROUTE}}       → {{AUTH_DESCRIPTION}}
-/settings                  → {{SETTINGS_DESCRIPTION}}
+/                          -> Home
+/menu                      -> redirects to /menu/dinner
+/menu/dinner               -> Dinner menu
+/menu/brunch               -> Brunch menu
+/menu/happy-hour           -> Happy Hour menu
+/menu/cocktails            -> Cocktails menu
+/menu/wine                 -> Wine menu
+/menu/dessert              -> Dessert menu
+/reservations              -> OpenTable embed
+/events                    -> Events
+/private-events            -> Private events + inquiry form
+/our-story                 -> About / Our Story
+/contact                   -> Contact + Google Map
+/careers                   -> Careers + application form
+/closed                    -> "Business closed" landing (currently the Order Online destination)
+/*                         -> NotFound (404)
 ```
 
+Source of truth: [src/App.jsx](src/App.jsx).
+
 ---
 
-## 11. Integrations
+## 9. Integrations
 
-<!-- AI providers, payment processors, third-party APIs. Delete if not applicable. -->
-
-| Integration | Purpose | Trigger |
+| Integration | Purpose | Where it lives |
 |---|---|---|
-| {{INTEGRATION_1}} | {{PURPOSE_1}} | {{TRIGGER_1}} |
-| {{INTEGRATION_2}} | {{PURPOSE_2}} | {{TRIGGER_2}} |
+| OpenTable | Reservation widget | iframe in [src/components/sections/OpenTableEmbed.jsx](src/components/sections/OpenTableEmbed.jsx), used by [src/pages/Reservations.jsx](src/pages/Reservations.jsx) |
+| Google Maps | Location map | iframe in [src/components/sections/GoogleMapEmbed.jsx](src/components/sections/GoogleMapEmbed.jsx) |
+| Font Awesome 6 | Social icons | CDN `<link>` in [index.html](index.html) |
+| Google Fonts | Raleway, Montserrat | `<link>` in [index.html](index.html) |
+| Instagram, X, Facebook | Outbound social links | [src/components/layout/Footer.jsx](src/components/layout/Footer.jsx) and [src/components/sections/SocialGrid.jsx](src/components/sections/SocialGrid.jsx) |
 
-{{INTEGRATION_NOTES}}
+There are no first-party APIs, no analytics, no auth provider, no payment processor.
 
 ---
 
-## 12. Key Dependencies & Links
+## 10. Intentionally Out of Scope
+
+The following are **not** in this project and should not be flagged as missing by audits:
+
+- No backend, no API routes, no serverless functions.
+- No database, no ORM, no schema.
+- No authentication or authorization.
+- No SSR / SSG. Pure client SPA.
+- No CMS integration. Content is hardcoded in JSX.
+- No tests. No test runner installed.
+- No TypeScript. JSX only.
+- No analytics, no telemetry, no cookies, no consent banner.
+- Form `onSubmit` handlers in [PrivateEventsForm.jsx](src/components/sections/PrivateEventsForm.jsx) and [CareersForm.jsx](src/components/sections/CareersForm.jsx) are not wired to any service yet. The forms collect data into local state only.
+- The "Order Online" CTA (desktop and mobile) routes to `/closed` as a placeholder until online ordering is integrated.
+
+---
+
+## 11. Key Dependencies & Links
 
 ### Documentation
 
 | Tool | Link |
 |---|---|
-| {{TOOL_1}} | {{DOC_LINK_1}} |
-| {{TOOL_2}} | {{DOC_LINK_2}} |
+| React 18 | https://react.dev |
+| React Router v7 | https://reactrouter.com/start/library/routing |
+| Vite | https://vite.dev/guide/ |
+| Tailwind CSS v3 | https://v3.tailwindcss.com/docs/installation |
+| ESLint flat config | https://eslint.org/docs/latest/use/configure/configuration-files |
+| Airbnb React/JSX style guide | https://github.com/airbnb/javascript/tree/master/react |
+| WCAG 2.2 AA quickref | https://www.w3.org/WAI/WCAG22/quickref/ |
+| OpenTable widget | https://restaurant.opentable.com/products/reservation-widget/ |
+| AWS S3 + CloudFront static hosting | https://docs.aws.amazon.com/AmazonS3/latest/userguide/website-hosting-cloudfront-walkthrough.html |
 
 ### Key Packages
 
-```{{PACKAGE_FORMAT}}
-{{KEY_PACKAGES_BLOCK}}
+```json
+"dependencies": {
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "react-icons": "^5.4.0",
+  "react-router-dom": "^7.1.1",
+  "react-spinners": "^0.15.0",
+  "react-toastify": "^11.0.3"
+},
+"devDependencies": {
+  "@vitejs/plugin-react": "^4.3.4",
+  "tailwindcss": "^3.4.17",
+  "vite": "^6.0.5",
+  "eslint": "^9.17.0",
+  "eslint-plugin-react": "^7.37.2",
+  "eslint-plugin-react-hooks": "^5.0.0",
+  "eslint-plugin-react-refresh": "^0.4.16"
+}
 ```
 
-### {{MIGRATION_OR_SETUP_WORKFLOW_TITLE}}
+### Build & Deploy
 
 ```bash
-{{KEY_COMMANDS_BLOCK}}
+npm install
+npm run dev          # local dev on http://localhost:3000
+npm run lint         # ESLint
+npm run build        # outputs to dist/
+npm run preview      # serve dist/ locally to verify
+
+# Deploy: upload dist/ to the S3 bucket, invalidate the CloudFront distribution.
+# AWS CLI examples (run with appropriate AWS_PROFILE):
+#   aws s3 sync dist/ s3://<bucket-name>/ --delete
+#   aws cloudfront create-invalidation --distribution-id <id> --paths "/*"
 ```
 
 ---
 
-*Last updated: {{DATE}}*
+*Last updated: 2026-05-04*

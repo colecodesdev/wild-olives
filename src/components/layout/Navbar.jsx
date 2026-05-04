@@ -183,7 +183,7 @@ export default function Navbar() {
                 </NavLink>
 
                 <div className="pt-8 flex justify-center">
-                  <ButtonLink to="/order-online" onClick={closeMenu}>
+                  <ButtonLink to="/closed" onClick={closeMenu}>
                     Order Online
                   </ButtonLink>
                 </div>
