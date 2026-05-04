@@ -52,8 +52,8 @@ export default function SocialGrid({
         </div>
 
         <Grid className={`grid ${gapClass} ${columnClass} ${heightClass}`}>
-          {images.map((src, i) => (
-            <ImageTile key={i} src={src} className='h-[320px]'/>
+          {images.map((src) => (
+            <ImageTile key={src} src={src} className='h-[320px]'/>
           ))}
         </Grid>
       </div>

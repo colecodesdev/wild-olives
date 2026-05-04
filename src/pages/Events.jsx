@@ -71,15 +71,15 @@ export default function Events() {
         }
       />
 
-      <div id='ContentBanner' className='hidden md:block'>
-      <ContentBanner
-        image={bottlesStatue}
-        heightClass="h-[520px]"
-        overlayClassName="bg-black/40"
-        backgroundClassName="bg-top"
-      >
-        <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
-      </ContentBanner>
+      <div className='hidden md:block'>
+        <ContentBanner
+          image={bottlesStatue}
+          heightClass="h-[520px]"
+          overlayClassName="bg-black/40"
+          backgroundClassName="bg-top"
+        >
+          <img src={corkOverlay} alt="" className="h-56 md:h-72 w-auto" />
+        </ContentBanner>
       </div>
 
       <SplitFeature

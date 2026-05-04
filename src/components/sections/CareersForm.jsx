@@ -4,8 +4,23 @@ import ButtonLink from '../ui/ButtonLink'
 const inputClassName =
   'w-full border border-black/40 px-5 py-3 text-sm tracking-widest text-black/70 font-montserrat placeholder-black/40 focus:outline-none focus:border-black'
 
-const buttonStyle =
+const uploadLabelStyle =
   'inline-block p-3 px-4 text-white bg-black hover:bg-gray-800 rounded-sm uppercase font-semibold tracking-widest'
+
+const fields = [
+  { name: 'firstName', label: 'First name', type: 'text', required: true, autoComplete: 'given-name' },
+  { name: 'lastName', label: 'Last name', type: 'text', required: true, autoComplete: 'family-name' },
+  { name: 'email', label: 'Email', type: 'email', required: true, autoComplete: 'email' },
+  { name: 'phone', label: 'Phone', type: 'tel', required: true, autoComplete: 'tel' },
+  { name: 'address', label: 'Address', type: 'text', required: true, autoComplete: 'street-address', wrapperClassName: 'md:col-span-1' },
+  { name: 'city', label: 'City', type: 'text', required: true, autoComplete: 'address-level2' },
+  { name: 'state', label: 'State', type: 'text', required: true, autoComplete: 'address-level1' },
+  { name: 'zip', label: 'Zip code', type: 'text', required: true, autoComplete: 'postal-code' },
+  { name: 'employer', label: 'Most recent employer', type: 'text', required: false, wrapperClassName: 'md:col-span-2' },
+  { name: 'position', label: 'Position held', type: 'text', required: false, wrapperClassName: 'md:col-span-2' },
+  { name: 'startDate', label: 'Start date [MM/YY]', type: 'text', required: false },
+  { name: 'endDate', label: 'End date [MM/YY]', type: 'text', required: false },
+]
 
 export default function CareersForm() {
   const resumeId = useId()
@@ -14,33 +29,39 @@ export default function CareersForm() {
   return (
     <form className="max-w-3xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <input className={inputClassName} name="firstName" placeholder="First name" />
-        <input className={inputClassName} name="lastName" placeholder="Last name" />
-
-        <input className={inputClassName} name="email" placeholder="Email" />
-        <input className={inputClassName} name="phone" placeholder="Phone" />
-
-        <div className="md:col-span-1">
-          <input className={inputClassName} name="address" placeholder="Address" />
-        </div>
-
-        <input className={inputClassName} name="city" placeholder="City" />
-        <input className={inputClassName} name="state" placeholder="State" />
-        <input className={inputClassName} name="zip" placeholder="Zip code" />
+        {fields.map(({ name, label, type, required, autoComplete, wrapperClassName }) => {
+          const inputId = `careers-${name}`
+          const input = (
+            <>
+              <label htmlFor={inputId} className="sr-only">
+                {label}
+              </label>
+              <input
+                id={inputId}
+                className={inputClassName}
+                name={name}
+                type={type}
+                placeholder={label}
+                required={required}
+                autoComplete={autoComplete}
+              />
+            </>
+          )
+          return wrapperClassName ? (
+            <div key={name} className={wrapperClassName}>
+              {input}
+            </div>
+          ) : (
+            <div key={name}>{input}</div>
+          )
+        })}
 
         <div className="md:col-span-2">
-          <input className={inputClassName} name="employer" placeholder="Most recent employer" />
-        </div>
-
-        <div className="md:col-span-2">
-          <input className={inputClassName} name="position" placeholder="Position held" />
-        </div>
-
-        <input className={inputClassName} name="startDate" placeholder="Start date [MM/YY]" />
-        <input className={inputClassName} name="endDate" placeholder="End date [MM/YY]" />
-
-        <div className="md:col-span-2">
+          <label htmlFor="careers-about" className="sr-only">
+            Tell us about you
+          </label>
           <textarea
+            id="careers-about"
             className={`${inputClassName} min-h-[140px] resize-none`}
             name="about"
             placeholder="Tell us about you!"
@@ -50,39 +71,39 @@ export default function CareersForm() {
 
       <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6">
 
-  <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
 
-      <input
-        id={resumeId}
-        type="file"
-        accept=".pdf,.doc,.docx"
-        className="hidden"
-        name="resume"
-        onChange={(e) => {
-          if (e.target.files[0]) {
-            setResumeName(e.target.files[0].name)
-          }
-        }}
-      />
+          <input
+            id={resumeId}
+            type="file"
+            accept=".pdf,.doc,.docx"
+            className="hidden"
+            name="resume"
+            onChange={(e) => {
+              if (e.target.files[0]) {
+                setResumeName(e.target.files[0].name)
+              }
+            }}
+          />
 
-      <label
-        htmlFor={resumeId}
-        className={`${buttonStyle} cursor-pointer`}
-      >
-        + Resume
-      </label>
+          <label
+            htmlFor={resumeId}
+            className={`${uploadLabelStyle} cursor-pointer`}
+          >
+            + Resume
+          </label>
 
-      {resumeName && (
-        <span className="text-sm text-black/60 font-montserrat tracking-widest">
-          {resumeName}
-        </span>
-      )}
+          {resumeName && (
+            <span className="text-sm text-black/60 font-montserrat tracking-widest">
+              {resumeName}
+            </span>
+          )}
 
-    </div>
+        </div>
 
-    <ButtonLink to="/closed">Submit Application</ButtonLink>
+        <ButtonLink to="/closed">Submit Application</ButtonLink>
 
-  </div>
+      </div>
     </form>
   )
 }
