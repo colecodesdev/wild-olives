@@ -1,9 +1,18 @@
-import { useMemo, useState } from 'react'
-import ButtonLink from '../ui/ButtonLink'
+import { useState } from 'react'
 
 const months = [
   'January','February','March','April','May','June',
   'July','August','September','October','November','December',
+]
+
+const DEFAULT_EVENT_STYLES = [
+  'Birthday',
+  'Anniversary',
+  'Wedding',
+  'Rehearsal Dinner',
+  'Corporate Event',
+  'Holiday Party',
+  'Other',
 ]
 
 export default function PrivateEventsForm({
@@ -11,19 +20,7 @@ export default function PrivateEventsForm({
   onSubmit,
   eventStyleOptions,
 }) {
-  const styles = useMemo(
-    () =>
-      eventStyleOptions ?? [
-        'Birthday',
-        'Anniversary',
-        'Wedding',
-        'Rehearsal Dinner',
-        'Corporate Event',
-        'Holiday Party',
-        'Other',
-      ],
-    [eventStyleOptions]
-  )
+  const styles = eventStyleOptions ?? DEFAULT_EVENT_STYLES
 
   const [form, setForm] = useState({
     firstName: '',
@@ -53,9 +50,6 @@ export default function PrivateEventsForm({
 
   const labelBase =
     'text-left text-xs font-medium uppercase tracking-[0.3em] font-raleway'
-
-  const buttonStyle =
-    'inline-block p-3 px-4 text-white bg-black hover:bg-gray-800 rounded-sm uppercase font-semibold tracking-widest'
 
   return (
     <form onSubmit={handleSubmit} className={`max-w-3xl mx-auto ${className}`}>
@@ -193,7 +187,12 @@ export default function PrivateEventsForm({
         </div>
       </div>
 
-      <ButtonLink to="/closed" className='mt-6'>Submit Form</ButtonLink>
+      <button
+        type="submit"
+        className="inline-block p-3 px-4 text-white bg-black hover:bg-gray-800 rounded-sm uppercase font-semibold tracking-widest mt-6"
+      >
+        Submit Form
+      </button>
     </form>
   )
 }

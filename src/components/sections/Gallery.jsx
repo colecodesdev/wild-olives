@@ -42,8 +42,8 @@ export default function Gallery({
                 index > 0 ? 'mt-2' : ''
               } ${rowClassName}`}
             >
-              {images.map((src, i) => (
-                <ImageTile key={i} src={src} className="h-[320px] md:h-full" />
+              {images.map((src) => (
+                <ImageTile key={src} src={src} className="h-[320px] md:h-full" />
               ))}
             </Grid>
           )

@@ -46,6 +46,7 @@ export default function BusinessClosed() {
         <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
 
           <button
+            type="button"
             onClick={() => navigate(-1)}
             className="inline-block p-3 px-6 text-white bg-black hover:bg-gray-800 rounded-sm uppercase font-semibold tracking-widest"
           >

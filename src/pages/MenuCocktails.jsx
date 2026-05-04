@@ -1,35 +1,16 @@
-import Container from '../components/ui/Container'
-import ContentBanner from '../components/ui/ContentBanner'
-import PageHeroTitle from '../components/ui/PageHeroTitle'
-import Section from '../components/ui/Section'
-import MenuNav from '../components/sections/MenuNav'
+import MenuPage from '../components/sections/MenuPage'
 
 import heroImg from '../assets/images/menu/you-me-sea.jpg'
 import cocktailMenuImg from '../assets/images/menu/cocktail-menu.jpg'
 
-export default function MenuCocktail() {
+export default function MenuCocktails() {
   return (
-    <>
-      <ContentBanner image={heroImg} heightClass="h-[520px]" overlayClassName="bg-black/40" backgroundClassName='bg-center'>
-        <Container>
-          <PageHeroTitle title="Cocktails" subtitle="Wild Olives 30a" />
-        </Container>
-      </ContentBanner>
-
-      <Section className="pt-20 hidden md:block">
-        <MenuNav />
-      </Section>
-
-      <Section className="pt-10 md:pt-0 pb-20">
-        <Container className="flex items-center justify-center">
-          <img
-            src={cocktailMenuImg}
-            alt="Cocktail Menu"
-            className="w-full max-w-5xl h-auto"
-            loading="lazy"
-          />
-        </Container>
-      </Section>
-    </>
+    <MenuPage
+      heroImg={heroImg}
+      menuImg={cocktailMenuImg}
+      menuImgAlt="Cocktail Menu"
+      title="Cocktails"
+      backgroundClassName="bg-center"
+    />
   )
 }

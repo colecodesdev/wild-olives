@@ -2,6 +2,7 @@ import Section from '../ui/Section'
 import Container from '../ui/Container'
 import ButtonLink from '../ui/ButtonLink'
 import Divider from '../ui/Divider'
+import Heading from '../ui/Heading'
 
 export default function PrivateEvents() {
   return (
@@ -9,9 +10,9 @@ export default function PrivateEvents() {
       <Container>
         <div className="text-center">
           <div className="flex items-center justify-center gap-6">
-            <div className="font-raleway uppercase tracking-[1rem] text-2xl md:text-5xl text-center pl-[1rem]">
+            <Heading as="h2" className="uppercase tracking-[1rem] text-2xl md:text-5xl text-center pl-[1rem]">
               Private Events
-            </div>
+            </Heading>
           </div>
 
             <Divider width="w-[250px] md:w-[630px]" className='my-4'/>
