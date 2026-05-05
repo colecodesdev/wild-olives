@@ -73,7 +73,6 @@ export default function Navbar() {
             <NavLink to="/menu" className={desktopNavLinkClass}>Menu</NavLink>
             <NavLink to="/reservations" className={desktopNavLinkClass}>Reservations</NavLink>
             <NavLink to="/events" className={desktopNavLinkClass}>Events</NavLink>
-            <NavLink to="/our-story" className={desktopNavLinkClass}>Our Story</NavLink>
             <NavLink to="/contact" className={desktopNavLinkClass}>Contact</NavLink>
             <div className="pl-8">
               <ButtonLink to="/closed">
@@ -188,9 +187,6 @@ export default function Navbar() {
                 </NavLink>
                 <NavLink to="/events" className={mobileLinkClass} onClick={closeMenu}>
                   <div className="py-4 text-center">Events</div>
-                </NavLink>
-                <NavLink to="/our-story" className={mobileLinkClass} onClick={closeMenu}>
-                  <div className="py-4 text-center">Our Story</div>
                 </NavLink>
                 <NavLink to="/contact" className={mobileLinkClass} onClick={closeMenu}>
                   <div className="py-4 text-center">Contact</div>
