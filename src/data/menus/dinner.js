@@ -1,0 +1,70 @@
+export const dinnerMenu = {
+  sections: [
+    {
+      title: 'Salads & Platters',
+      anchor: 'salads',
+      items: [
+        { name: 'Smokey Blue Wedge', price: '18', tags: ['gf'], description: 'Iceberg Lettuce, Grape Tomatoes, Bacon, Red Onions & Point Reyes Blue Cheese Crumbles' },
+        { name: 'Classic Caesar Salad', price: '17', description: 'Romaine Lettuce, Grape Tomatoes, Croutons & Caesar Dressing' },
+        { name: 'Greek Salad', price: '17', tags: ['gf'], description: 'Greens, Potatoes, Heirloom Tomatoes, Cucumbers, Kalamata Olives, Green Bell Peppers, Feta Cheese & Greek Vinaigrette' },
+        { name: 'Caprese Salad', price: '22', tags: ['gf'], description: 'Fresh Burrata, Heirloom Tomatoes, EVOO, Salt, Pepper & Fresh Basil w/ Balsamic Glaze' },
+        { name: 'Mezze Platter', price: '29', description: 'Falafel, Bread, Warmed Olives, Hummus, Shirazi Salsa, Marcona Almonds, Figs, Carrots, Celery, EVOO & Raita Yogurt' },
+        { name: 'Charcuterie', price: '32', description: "Chef's Choice of Cheeses & Meats, Warmed Olives, Marcona Almonds, Dried Fruit, Honey & Bread w/ Olive Oil" },
+      ],
+    },
+    {
+      title: 'Small Bites',
+      anchor: 'small-bites',
+      items: [
+        { name: 'Wild Mushroom Ravioli', price: '19', description: 'Wild Mushroom Ravioli, Shiitake Mushrooms, Umami Broth & Bread' },
+        { name: 'Wild Olives Street Tacos', price: '20', description: 'Seared Catch, Corn Tortilla, Guacamole & Roasted Corn Salsa' },
+        { name: 'Crab and Artichoke Dip', price: '22', description: 'Lump Crab Meat, Artichoke Hearts, Cream Cheese & Harissa' },
+        { name: 'Shrimp Cocktail', price: '22', description: 'Jumbo Shrimp Cajun Boiled, Served with Cajun Cocktail Sauce & Remoulade' },
+        { name: 'Fried Green Tomatoes', price: '25', description: 'Confetti Salsa, Crab Meat, Bacon & Wasabi Aioli' },
+        { name: 'Fried Goat Cheese', price: '26', description: 'Panko Crusted with Roasted Corn Salsa & Mango Chutney' },
+        { name: 'Mediterranean Scallops', price: '26', tags: ['gf'], description: 'Lemon and Green Grape Relish & Chow Chow' },
+        { name: 'Moroccan Cauliflower Bites', price: '15', tags: ['gf'], description: 'Fried Cauliflower, Harissa Hot Sauce & Raita Yogurt' },
+        { name: 'Tuna Poke', price: '29', description: 'Marinated Tuna, Avocado, Cucumber, Wasabi Aioli, Sriracha Aioli, Sesame Seeds & Marcona Almonds' },
+        { name: 'Crab Cake with Red Pepper Aioli', price: '28', description: 'Roasted Corn Salsa, Bacon, & Roasted Red Pepper Aioli' },
+      ],
+    },
+    {
+      title: 'Handhelds',
+      anchor: 'handhelds',
+      items: [
+        { name: 'Grilled Chicken Supreme', price: '22', description: 'Joyce Farm Chicken Breast, Ginger-Soy Sauce, Topped w/ Bacon, Swiss, Tomato & Honey Mustard Spread' },
+        { name: "Chris' Famous Reuben “Dagwood”", price: '24', description: 'A triple decker | Pastrami, Corned Beef, Swiss, Sauerkraut, Bread & Butter Pickles & Russian Dressing on Marble Rye' },
+        { name: 'Margherita Flatbread', price: '17', description: 'EVOO, Tomatoes, Fresh Mozzarella & Basil' },
+        { name: 'Grilled Fresh Catch Sandwich', price: 'MKT', description: "Ask your server for Chef's daily selections" },
+        { name: "Chris' Burger", price: '20', description: 'Grass Fed Beef, Cheese, Bacon, Crispy Fried Tobacco Onions with Fries\n— Caymus and a Burger 49 —' },
+        { name: 'California White Chicken Flatbread', price: '19', description: 'White Parmesan Sauce, Chicken, Artichokes, Mushrooms, Sun-Dried Tomatoes & Mozzarella' },
+      ],
+    },
+    {
+      title: 'Entrées',
+      anchor: 'entrees',
+      items: [
+        { name: 'Greek Style Catch with Shrimp', price: '48', tags: ['gf'], description: 'Grilled Catch, Shrimp, Tomatoes, Artichokes, Olives, Capers & Feta Cheese' },
+        { name: 'Catch Piccata with Shrimp', price: '49', description: 'Fresh Catch, Pasta & Lemon Caper Butter & Grilled Shrimp' },
+        { name: 'Black Pepper Seared Tuna', price: '48', tags: ['gf'], description: 'Asian Glaze, Sautéed Spinach & Avocado' },
+        { name: "Chef's Cut", price: 'MKT', description: "Ask your server for Chef's Daily Selection" },
+        { name: 'Grilled Catch', price: '39', description: 'Grilled Catch with Choice of Two A La Carte Items' },
+        { name: 'Paprika Chicken with Pancetta', price: '38', description: 'Joyce Farms Chicken Breast, Paprika Flour, Spring Risotto & Wild Mushrooms' },
+        { name: 'Bronzed Seared Catch', price: '45', tags: ['gf'], description: 'Fire Roasted Corn, White & Black Bean Warm Salsa' },
+        { name: 'Filet Mignon', price: '48', description: "Prime Beef, Chef's Vegetable & Chef's Starch\n— Add 8 OZ Caribbean Lobster Tail 35 —" },
+      ],
+    },
+    {
+      title: 'A La Carte',
+      anchor: 'a-la-carte',
+      items: [
+        { name: "Chef's Starch", price: '10', description: "Chef's Daily Selection" },
+        { name: 'French Fries', price: '10', description: 'House Cut Russet Potatoes, Grill Spice' },
+        { name: 'Spring Risotto', price: '10', tags: ['gf'], description: 'Arborio Rice, Mushrooms & Peas' },
+        { name: 'Warmed Olives', price: '10', tags: ['gf'], description: 'Olive Trio, Rosemary & Lemon Zest' },
+        { name: 'Brussel Sprouts', price: '10', tags: ['gf'], description: 'Parmesan, Crispy Prosciutto, Maple Dijon Glaze & Candied Pecans' },
+        { name: "Chef's Vegetable", price: '10', tags: ['gf'], description: "Chef's Daily Selection" },
+      ],
+    },
+  ],
+}
