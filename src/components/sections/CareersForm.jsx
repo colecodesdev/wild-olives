@@ -4,6 +4,9 @@ import ButtonLink, { buttonLinkBase } from '../ui/ButtonLink'
 const inputClassName =
   'w-full border border-black/40 px-5 py-3 text-sm tracking-widest text-black/70 font-montserrat placeholder-black/40 focus:outline-none focus:border-black'
 
+const labelClassName =
+  'block mb-2 text-left text-xs font-medium uppercase tracking-[0.3em] font-raleway'
+
 const fields = [
   { name: 'firstName', label: 'First name', type: 'text', required: true, autoComplete: 'given-name' },
   { name: 'lastName', label: 'Last name', type: 'text', required: true, autoComplete: 'family-name' },
@@ -28,9 +31,9 @@ export default function CareersForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fields.map(({ name, label, type, required, autoComplete, wrapperClassName }) => {
           const inputId = `careers-${name}`
-          const input = (
-            <>
-              <label htmlFor={inputId} className="sr-only">
+          return (
+            <div key={name} className={wrapperClassName}>
+              <label htmlFor={inputId} className={labelClassName}>
                 {label}
               </label>
               <input
@@ -38,30 +41,21 @@ export default function CareersForm() {
                 className={inputClassName}
                 name={name}
                 type={type}
-                placeholder={label}
                 required={required}
                 autoComplete={autoComplete}
               />
-            </>
-          )
-          return wrapperClassName ? (
-            <div key={name} className={wrapperClassName}>
-              {input}
             </div>
-          ) : (
-            <div key={name}>{input}</div>
           )
         })}
 
         <div className="md:col-span-2">
-          <label htmlFor="careers-about" className="sr-only">
+          <label htmlFor="careers-about" className={labelClassName}>
             Tell us about you
           </label>
           <textarea
             id="careers-about"
             className={`${inputClassName} min-h-[140px] resize-none`}
             name="about"
-            placeholder="Tell us about you!"
           />
         </div>
       </div>
