@@ -35,7 +35,9 @@ export default function Home() {
     <>
       <ParallaxBanner
         image={crazyView}
-        heightClass="h-[calc(100svh-112px)] md:h-[calc(100vh-112px)]"
+        alt="Coastal view from the Wild Olives bistro"
+        priority
+        heightClass="h-svh md:h-screen"
         overlayClassName="bg-black/30"
       >
         <Container>
