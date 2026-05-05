@@ -10,10 +10,12 @@ export default function MainLayout() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [pathname])
 
+  const isHome = pathname === '/'
+
   return (
     <>
       <Navbar />
-      <main>
+      <main className={isHome ? '' : 'pt-28'}>
         <Outlet />
       </main>
       <Footer />
