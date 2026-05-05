@@ -27,6 +27,10 @@ There is no test command. The project has no test framework installed by design 
 - **Production URL:** https://d6uiwxps2u5ue.cloudfront.net
 - **No environment variables.** No `.env` file is needed or expected. If one is added in the future, both the file and `.env.example` should be created together.
 
+## Screenshot protocol
+
+All committed screenshots live under [context/screenshots/](context/screenshots/). Save new screenshots there directly; do not drop them in the repo root. The root [.gitignore](.gitignore) excludes top-level `*.png`, `*.jpg`, `*.jpeg`, `*.webp`, and `*.gif` so a stray screenshot at the project root is never accidentally staged. The single exception is [docs/app-screenshot.png](docs/app-screenshot.png), which is the production reference image embedded in the README.
+
 ## Known intentional gaps
 
 These are not bugs. Do not "fix" them without explicit instruction.
