@@ -122,10 +122,6 @@ export default function Home() {
             Chef Chris Trovas brings you Wild Olives Bistro on 30a. Everything from our wine selection, cocktails, and ambiance will remind you of your favorite old-world travels and the updated amenities of the new world. We can’t wait to welcome you into our kitchen. Wild Olives has always been like entering the home of the Trovas family. Think of this as the same homey, familial experience, with a renovation!
           </p>
 
-          <ButtonLink to="/our-story" className="mb-7">
-            Our Story
-          </ButtonLink>
-
           <img src={logo} alt="Wild Olives Logo" className="h-16 md:h-24 w-auto mx-auto" />
         </div>
       </SplitFeature>
