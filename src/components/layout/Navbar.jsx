@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import logo from '../../assets/logos/logo.png'
 import ButtonLink from '../ui/ButtonLink'
-import { navLinkClass } from '../../lib/navLinkClass'
 import { MENU_LINKS_MOBILE } from '../../data/menuLinks'
+import useScrolledPast from '../../hooks/useScrolledPast'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
   const isMenuRoute = location.pathname === '/menu' || location.pathname.startsWith('/menu/')
+  const isHome = location.pathname === '/'
+  const isScrolled = useScrolledPast(80)
+  const isTransparent = isHome && !isScrolled && !isOpen
 
   useEffect(() => {
     if (!isOpen) return
@@ -28,28 +31,50 @@ export default function Navbar() {
     }
   }, [isOpen])
 
-  const mobileLinkClass = ({ isActive }) =>
-    isActive ? 'text-black font-semibold' : 'text-black'
-
   const closeMenu = () => {
     setIsOpen(false)
     setIsMenuOpen(false)
   }
 
+  const desktopNavLinkClass = ({ isActive }) => {
+    if (isTransparent) {
+      return isActive
+        ? 'text-white font-semibold border-b-2 border-white pb-1'
+        : 'text-white hover:text-white/80'
+    }
+    return isActive
+      ? 'text-black font-semibold border-b-2 border-black pb-1'
+      : 'text-black hover:text-gray-600'
+  }
+
+  const mobileLinkClass = ({ isActive }) =>
+    isActive ? 'text-black font-semibold' : 'text-black'
+
+  const navBgClass = isTransparent
+    ? 'bg-transparent border-transparent'
+    : 'bg-white border-b'
+
+  const hamburgerColorClass = isTransparent ? 'bg-white' : 'bg-black'
+  const logoFilterClass = isTransparent ? 'brightness-0 invert' : ''
+
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${navBgClass}`}>
       <div className="w-full mx-auto px-6 md:px-28">
         <div className="flex items-center justify-between h-28">
           <NavLink to="/" className="flex items-center" onClick={closeMenu}>
-            <img src={logo} alt="Wild Olives Logo" className="h-16 w-auto" />
+            <img
+              src={logo}
+              alt="Wild Olives Logo"
+              className={`h-16 w-auto transition-[filter] duration-300 ${logoFilterClass}`}
+            />
           </NavLink>
 
-          <div className="hidden md:flex items-center space-x-10 uppercase font-medium tracking-widest text-sm">
-            <NavLink to="/menu" className={navLinkClass}>Menu</NavLink>
-            <NavLink to="/reservations" className={navLinkClass}>Reservations</NavLink>
-            <NavLink to="/events" className={navLinkClass}>Events</NavLink>
-            <NavLink to="/our-story" className={navLinkClass}>Our Story</NavLink>
-            <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
+          <div className={`hidden md:flex items-center space-x-10 uppercase font-medium tracking-widest text-sm transition-colors duration-300`}>
+            <NavLink to="/menu" className={desktopNavLinkClass}>Menu</NavLink>
+            <NavLink to="/reservations" className={desktopNavLinkClass}>Reservations</NavLink>
+            <NavLink to="/events" className={desktopNavLinkClass}>Events</NavLink>
+            <NavLink to="/our-story" className={desktopNavLinkClass}>Our Story</NavLink>
+            <NavLink to="/contact" className={desktopNavLinkClass}>Contact</NavLink>
             <div className="pl-8">
               <ButtonLink to="/closed">
                 Order Online
@@ -66,17 +91,17 @@ export default function Navbar() {
           >
             <div className="flex flex-col justify-center gap-1.5">
               <span
-                className={`block h-0.5 w-6 bg-black transition-transform duration-200 ${
+                className={`block h-0.5 w-6 transition-all duration-200 ${hamburgerColorClass} ${
                   isOpen ? 'translate-y-2 rotate-45' : ''
                 }`}
               />
               <span
-                className={`block h-0.5 w-6 bg-black transition-opacity duration-200 ${
+                className={`block h-0.5 w-6 transition-all duration-200 ${hamburgerColorClass} ${
                   isOpen ? 'opacity-0' : 'opacity-100'
                 }`}
               />
               <span
-                className={`block h-0.5 w-6 bg-black transition-transform duration-200 ${
+                className={`block h-0.5 w-6 transition-all duration-200 ${hamburgerColorClass} ${
                   isOpen ? '-translate-y-2 -rotate-45' : ''
                 }`}
               />

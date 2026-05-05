@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import ButtonLink from '../ui/ButtonLink'
 
 const months = [
@@ -22,6 +22,8 @@ export default function PrivateEventsForm({
   eventStyleOptions,
 }) {
   const styles = eventStyleOptions ?? DEFAULT_EVENT_STYLES
+  const idPrefix = useId()
+  const fieldId = (name) => `${idPrefix}-${name}`
 
   const [form, setForm] = useState({
     firstName: '',
@@ -50,56 +52,65 @@ export default function PrivateEventsForm({
     'w-full border border-black/30 px-4 py-3 text-sm tracking-widest font-montserrat focus:outline-none focus:ring-0'
 
   const labelBase =
-    'text-left text-xs font-medium uppercase tracking-[0.3em] font-raleway'
+    'block mb-2 text-left text-xs font-medium uppercase tracking-[0.3em] font-raleway'
 
   return (
     <form onSubmit={handleSubmit} className={`max-w-3xl mx-auto ${className}`}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <div className={labelBase}>First name</div>
+          <label htmlFor={fieldId('firstName')} className={labelBase}>First name</label>
           <input
+            id={fieldId('firstName')}
             className={inputBase}
             value={form.firstName}
             onChange={(e) => update('firstName', e.target.value)}
+            autoComplete="given-name"
             required
           />
         </div>
 
         <div>
-          <div className={labelBase}>Last name</div>
+          <label htmlFor={fieldId('lastName')} className={labelBase}>Last name</label>
           <input
+            id={fieldId('lastName')}
             className={inputBase}
             value={form.lastName}
             onChange={(e) => update('lastName', e.target.value)}
+            autoComplete="family-name"
             required
           />
         </div>
 
         <div>
-          <div className={labelBase}>E-mail</div>
+          <label htmlFor={fieldId('email')} className={labelBase}>E-mail</label>
           <input
+            id={fieldId('email')}
             className={inputBase}
             type="email"
             value={form.email}
             onChange={(e) => update('email', e.target.value)}
+            autoComplete="email"
             required
           />
         </div>
 
         <div>
-          <div className={labelBase}>Phone number</div>
+          <label htmlFor={fieldId('phone')} className={labelBase}>Phone number</label>
           <input
+            id={fieldId('phone')}
             className={inputBase}
             type="tel"
             value={form.phone}
             onChange={(e) => update('phone', e.target.value)}
+            autoComplete="tel"
             required
           />
         </div>
 
         <div>
-          <div className={labelBase}>Event style</div>
+          <label htmlFor={fieldId('eventStyle')} className={labelBase}>Event style</label>
           <select
+            id={fieldId('eventStyle')}
             className={inputBase}
             value={form.eventStyle}
             onChange={(e) => update('eventStyle', e.target.value)}
@@ -115,8 +126,9 @@ export default function PrivateEventsForm({
         </div>
 
         <div>
-          <div className={labelBase}>Number of guests</div>
+          <label htmlFor={fieldId('guests')} className={labelBase}>Number of guests</label>
           <input
+            id={fieldId('guests')}
             className={inputBase}
             inputMode="numeric"
             value={form.guests}
@@ -126,8 +138,9 @@ export default function PrivateEventsForm({
         </div>
 
         <div>
-          <div className={labelBase}>Month</div>
+          <label htmlFor={fieldId('month')} className={labelBase}>Month</label>
           <select
+            id={fieldId('month')}
             className={inputBase}
             value={form.month}
             onChange={(e) => update('month', e.target.value)}
@@ -144,8 +157,9 @@ export default function PrivateEventsForm({
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:col-span-1">
           <div>
-            <div className={labelBase}>Day</div>
+            <label htmlFor={fieldId('day')} className={labelBase}>Day</label>
             <input
+              id={fieldId('day')}
               className={inputBase}
               inputMode="numeric"
               value={form.day}
@@ -155,8 +169,9 @@ export default function PrivateEventsForm({
           </div>
 
           <div className="col-span-1 md:col-span-2">
-            <div className={labelBase}>Year</div>
+            <label htmlFor={fieldId('year')} className={labelBase}>Year</label>
             <input
+              id={fieldId('year')}
               className={inputBase}
               inputMode="numeric"
               value={form.year}
@@ -167,8 +182,9 @@ export default function PrivateEventsForm({
         </div>
 
         <div className="md:col-span-2">
-          <div className={labelBase}>What kind of event? (Birthday, Wedding, etc.)</div>
+          <label htmlFor={fieldId('eventType')} className={labelBase}>What kind of event? (Birthday, Wedding, etc.)</label>
           <input
+            id={fieldId('eventType')}
             className={inputBase}
             value={form.eventType}
             onChange={(e) => update('eventType', e.target.value)}
@@ -177,10 +193,11 @@ export default function PrivateEventsForm({
         </div>
 
         <div className="md:col-span-2">
-          <div className={labelBase}>
+          <label htmlFor={fieldId('notes')} className={labelBase}>
             Should we know something special about you or your guests? Fill us in!
-          </div>
+          </label>
           <textarea
+            id={fieldId('notes')}
             className={`${inputBase} min-h-[160px] resize-none`}
             value={form.notes}
             onChange={(e) => update('notes', e.target.value)}

@@ -22,3 +22,17 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code agent memory (per-session, not source-controlled)
+.claude/agent-memory/
+
+# Playwright MCP debug snapshots
+.playwright-mcp/
+
+# Screenshot protocol: stray screenshots in the repo root are ignored.
+# Commit reference screenshots under context/screenshots/ instead.
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+/*.gif
