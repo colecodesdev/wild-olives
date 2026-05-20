@@ -17,15 +17,14 @@ export default function Navbar() {
     setIsMenuOpen(false)
   }
   const location = useLocation()
-  const isMenuRoute = location.pathname === '/menu' || location.pathname.startsWith('/menu/')
   const isHome = location.pathname === '/'
   const isScrolled = useScrolledPast(80)
   const isTransparent = isHome && !isScrolled && !isOpen
 
   useEffect(() => {
     if (!isOpen) return
-    setIsMenuOpen(isMenuRoute)
-  }, [isOpen, isMenuRoute])
+    setIsMenuOpen(true)
+  }, [isOpen])
 
   useEffect(() => {
     if (!isOpen) return
@@ -141,7 +140,7 @@ export default function Navbar() {
           </div>
 
           {/* Primary nav links — left-aligned */}
-          <div className="px-8 pt-8 pb-4 flex flex-col uppercase font-medium tracking-widest">
+          <div className="px-8 pt-8 flex flex-col uppercase font-medium tracking-widest">
             {/* Menu accordion */}
             <div>
               <button
@@ -171,13 +170,13 @@ export default function Navbar() {
                   isMenuOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="ml-2 pl-4 border-l border-black/20 flex flex-col gap-0.5 pb-3">
+                <div className="ml-2 pl-4 border-l border-black/20 flex flex-col gap-0.5">
                   {MENU_LINKS_MOBILE.map(({ path, label }) => (
                     <NavLink
                       key={path}
                       to={path}
                       className={({ isActive }) =>
-                        `block py-2 text-sm tracking-widest ${isActive ? 'text-black font-semibold' : 'text-black/50 hover:text-black transition-colors duration-150'}`
+                        `block py-2 text-sm tracking-widest ${isActive ? 'text-black font-semibold' : 'text-black/70 hover:text-black transition-colors duration-150'}`
                       }
                       onClick={closeMenu}
                     >
@@ -211,24 +210,53 @@ export default function Navbar() {
             </NavLink>
           </div>
 
-          {/* Secondary content + CTA pushed to bottom */}
-          <div className="mt-auto px-8 pb-10 border-t pt-8 flex flex-col gap-6">
-            {/* Hours + address */}
+          {/* Primary CTA — directly under primary nav */}
+          <div className="px-8 pt-6">
+            <ButtonLink onClick={openRes} className="w-full">
+              Make a Reservation
+            </ButtonLink>
+          </div>
+
+          {/* Secondary nav */}
+          <div className="px-8 mt-6 pt-6 border-t border-black/15 flex flex-col">
+            <NavLink
+              to="/private-events"
+              className={({ isActive }) =>
+                `flex items-center min-h-[44px] text-sm tracking-wider ${isActive ? 'text-black font-medium' : 'text-black/70 hover:text-black transition-colors duration-150'}`
+              }
+              onClick={closeMenu}
+            >
+              Private Events
+            </NavLink>
+            <NavLink
+              to="/careers"
+              className={({ isActive }) =>
+                `flex items-center min-h-[44px] text-sm tracking-wider ${isActive ? 'text-black font-medium' : 'text-black/70 hover:text-black transition-colors duration-150'}`
+              }
+              onClick={closeMenu}
+            >
+              Careers
+            </NavLink>
+          </div>
+
+          {/* Footer card — hours, address, phone, social */}
+          <div className="mt-auto mx-6 mb-6 px-6 py-6 bg-gray-50 rounded-md flex flex-col gap-5">
             <div className="flex flex-col gap-1 uppercase tracking-widest text-xs">
-              <div className="font-semibold text-black mb-1">Open Daily &nbsp;·&nbsp; 2 PM – 10 PM</div>
-              <div className="text-black/50">4771 E County Hwy 30A, Unit C 103</div>
-              <div className="text-black/50">Santa Rosa Beach, FL 32459</div>
-              <div className="text-black mt-1">(850) 399 – 5411</div>
+              <div className="font-semibold text-black">Open Daily &nbsp;·&nbsp; 2 PM – 10 PM</div>
+              <div className="text-black/70 mt-2 leading-5">
+                4771 E County Hwy 30A, Unit C 103<br />
+                Santa Rosa Beach, FL 32459
+              </div>
+              <div className="text-black mt-2">(850) 399 – 5411</div>
             </div>
 
-            {/* Social icons */}
             <div className="flex items-center gap-3">
               <a
                 href="https://x.com/wildoliveswcb"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="X"
-                className="h-9 w-9 rounded-full bg-black flex items-center justify-center hover:bg-gray-700 active:scale-95 transition-all duration-150"
+                className="h-11 w-11 rounded-full bg-black flex items-center justify-center hover:bg-gray-700 active:scale-95 transition-all duration-150"
               >
                 <span className="text-white text-sm font-semibold">X</span>
               </a>
@@ -237,25 +265,20 @@ export default function Navbar() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="h-9 w-9 rounded-full bg-black flex items-center justify-center hover:bg-gray-700 active:scale-95 transition-all duration-150"
+                className="h-11 w-11 rounded-full bg-black flex items-center justify-center hover:bg-gray-700 active:scale-95 transition-all duration-150"
               >
-                <i className="fa-brands fa-instagram text-white text-sm" />
+                <i className="fa-brands fa-instagram text-white text-base" />
               </a>
               <a
                 href="https://facebook.com/wildolives30a"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                className="h-9 w-9 rounded-full bg-black flex items-center justify-center hover:bg-gray-700 active:scale-95 transition-all duration-150"
+                className="h-11 w-11 rounded-full bg-black flex items-center justify-center hover:bg-gray-700 active:scale-95 transition-all duration-150"
               >
-                <i className="fa-brands fa-facebook-f text-white text-sm" />
+                <i className="fa-brands fa-facebook-f text-white text-base" />
               </a>
             </div>
-
-            {/* Reservation CTA */}
-            <ButtonLink onClick={openRes}>
-              Make a Reservation
-            </ButtonLink>
           </div>
         </div>
       </div>

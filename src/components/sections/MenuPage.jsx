@@ -51,8 +51,11 @@ export default function MenuPage({
         </Container>
       </ContentBanner>
 
+      {/* Anchor used to scroll to the top of the menu on sub-page switches. */}
+      <div id="menu-subnav-anchor" aria-hidden="true" />
+
       {/* Desktop sub-nav */}
-      <div className="sticky top-20 z-30 bg-white border-b border-black/5 hidden md:block">
+      <div id="menu-subnav" className="sticky top-20 z-30 bg-white border-b border-black/5 hidden md:block">
         <Section className="py-4">
           <MenuNav />
         </Section>

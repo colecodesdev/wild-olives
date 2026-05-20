@@ -50,6 +50,10 @@ export default function Footer() {
 
           {/* Bottom Row: left info + right links */}
           <div className="mt-10 flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+            <div className="flex flex-col items-center md:hidden">
+              <ButtonLink onClick={openReservation}>Make a Reservation</ButtonLink>
+            </div>
+
             <div className="text-center md:text-left">
               <div className="text-2xl uppercase font-raleway tracking-widest font-medium">
                 Wild Olives 30a
@@ -63,10 +67,6 @@ export default function Footer() {
               <div className="mt-2 text-sm tracking-widest font-medium">
                 (850) 399 - 5411
               </div>
-            </div>
-
-            <div className="flex flex-col items-center md:hidden mt-2">
-              <ButtonLink onClick={openReservation}>Make a Reservation</ButtonLink>
             </div>
 
             <div className="text-left md:text-right uppercase font-raleway tracking-widest font-medium text-sm space-y-3 hidden md:block">
