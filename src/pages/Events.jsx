@@ -22,8 +22,10 @@ import bingo from '../assets/images/events/bingo.jpeg'
 import momWineDinner from '../assets/images/events/mom-wine-dinner.JPG'
 import redWine from '../assets/images/events/red-wine.JPG'
 import { proseClass } from '../lib/typography'
+import { useReservation } from '../contexts/ReservationContext'
 
 export default function Events() {
+  const { open: openReservation } = useReservation()
   return (
     <>
       <ContentBanner
@@ -84,16 +86,30 @@ export default function Events() {
           <img
             src={jazzFest}
             alt="Fine Wine Friday"
-            className="px-6 md:px-0 w-auto h-[450px] md:h-[720px] object-cover"
+            className="px-6 md:px-0 w-auto h-[450px] md:h-[720px] object-cover mx-auto block"
           />
+        }
+        mobileTitle={
+          <div className="text-center max-w-[560px] mx-auto">
+            <div className="uppercase tracking-[0.45em] text-sm text-black/60 font-raleway">
+              Saturday, November 8th
+            </div>
+            <h2 className="mt-4 font-raleway uppercase tracking-[0.35em] text-4xl leading-tight">
+              SOWAL
+              <br />
+              Jazz
+              <br />
+              Festival
+            </h2>
+          </div>
         }
       >
         <div className="text-center px-10 md:px-16 max-w-[560px] mx-auto">
-          <div className="uppercase tracking-[0.45em] text-sm text-black/60 font-raleway">
+          <div className="hidden md:block uppercase tracking-[0.45em] text-sm text-black/60 font-raleway">
             Saturday, November 8th
           </div>
 
-          <h2 className="mt-4 font-raleway uppercase tracking-[0.35em] text-4xl md:text-5xl leading-tight">
+          <h2 className="hidden md:block mt-4 font-raleway uppercase tracking-[0.35em] text-4xl md:text-5xl leading-tight">
             SOWAL
             <br />
             Jazz
@@ -143,7 +159,7 @@ export default function Events() {
             Ticket prices $6 tax & fees added
           </p>
 
-          <ButtonLink to="/closed" className="mt-8">
+          <ButtonLink to="/" className="mt-8">
             Tickets
           </ButtonLink>
 
@@ -160,17 +176,27 @@ export default function Events() {
           <img
             src={bingo}
             alt="Music Bingo Wednesdays"
-            className="px-6 md:px-0 w-auto h-[450px] md:h-[720px] object-cover"
+            className="px-6 md:px-0 w-auto h-[450px] md:h-[720px] object-cover mx-auto block"
           />
+        }
+        mobileTitle={
+          <div className="text-center max-w-[560px] mx-auto">
+            <div className="uppercase tracking-[0.45em] text-sm text-black/60 font-raleway pl-[0.45em]">
+              Every Wednesday
+            </div>
+            <h2 className="mt-4 font-raleway uppercase tracking-[0.35em] text-4xl leading-tight pl-[0.35em]">
+              Music Bingo
+            </h2>
+          </div>
         }
       >
         <div className="text-center px-10 md:px-16 max-w-[560px] mx-auto">
 
-          <div className="uppercase tracking-[0.45em] text-sm text-black/60 font-raleway pl-[0.45em]">
+          <div className="hidden md:block uppercase tracking-[0.45em] text-sm text-black/60 font-raleway pl-[0.45em]">
             Every Wednesday
           </div>
 
-          <h2 className="mt-4 font-raleway uppercase tracking-[0.35em] text-4xl md:text-5xl leading-tight pl-[0.35em]">
+          <h2 className="hidden md:block mt-4 font-raleway uppercase tracking-[0.35em] text-4xl md:text-5xl leading-tight pl-[0.35em]">
             Music Bingo
           </h2>
 
@@ -200,6 +226,10 @@ export default function Events() {
           <div className="mt-10 text-sm tracking-widest">
             WEDNESDAYS: <strong>6:00 PM - 9:00 PM</strong>
           </div>
+
+          <ButtonLink onClick={openReservation} className="mt-8">
+            Make a Reservation
+          </ButtonLink>
 
         </div>
       </SplitFeature>

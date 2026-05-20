@@ -1,9 +1,10 @@
 export const wineMenu = {
-  priceFormatNote: 'Prices shown as Glass / Carafe / Bottle where applicable. By-the-glass pours 5 oz, still wines 5 oz / carafe / bottle.',
   sections: [
     {
       title: 'Sparkling',
       anchor: 'sparkling',
+      columns: 1,
+      centerItems: true,
       items: [
         { name: 'Benvolio', price: '$13 / 45', description: 'Glera, Veneto, Italy' },
         { name: 'Bervini Rosé', price: '$14 / 45', description: 'Blend, Friuli Venezia-Giulia, Italy' },
@@ -13,6 +14,8 @@ export const wineMenu = {
     {
       title: 'Rosé',
       anchor: 'rose',
+      columns: 1,
+      centerItems: true,
       items: [
         { name: 'Bieler Père et Fils', price: '$17 / 34 / 59', description: 'Blend, Bandol, France' },
         { name: 'Minuty Prestige', price: '$16 / 32 / 56', description: 'Blend, Cotes de Provence, France' },
@@ -21,6 +24,7 @@ export const wineMenu = {
     {
       title: 'Whites',
       anchor: 'whites',
+      columns: 2,
       items: [
         { name: 'Mokoroa', price: '$14 / 28 / 49', description: 'Sauvignon Blanc, Marlborough, New Zealand' },
         { name: 'Domaine Naudet', price: '$25 / 50 / 85', description: 'Sauvignon Blanc, Sancerre, Loire Valley, France' },
@@ -37,6 +41,7 @@ export const wineMenu = {
     {
       title: 'Reds',
       anchor: 'reds',
+      columns: 2,
       items: [
         { name: 'Sweet Cheeks', price: '$16 / 32 / 56', description: 'Pinot Noir, Oregon' },
         { name: 'Domaine Gil', price: '$22 / 44 / 75', description: 'Pinot Noir, Burgundy, France' },
@@ -52,18 +57,16 @@ export const wineMenu = {
     },
     {
       title: "Chris' Picks",
-      subtitle: 'Flight $60 — Four 2 oz pours of your choice',
       anchor: 'chris-picks',
+      columns: 1,
+      centerItems: true,
       items: [
         { name: '2018 Del Dotto Cinghiale', price: '15 / 30 / 125', description: 'Pinot Noir, Sonoma Coast, USA' },
-        { name: '2018 Chapuis', price: '20 / 39 / 165', description: 'Pinot Noir, Aloxe-Corton, Premier Cru, Burgundy, France' },
-        { name: '2017 Mastrojanni', price: '17 / 35 / 160', description: 'Sangiovese Grosso, Brunello di Montalcino, Italy' },
-        { name: '2016 Chateau de Meursault', price: '20 / 40 / 185', description: 'Chardonnay, Meursault-Perrieres Premier Cru, Burgundy, France' },
         { name: '2018 Guidobono', price: '15 / 30 / 125', description: 'Nebbiolo, Le Coste di Monforte, Barolo, Piemonte, Italy' },
+        { name: '2018 Chapuis', price: '20 / 39 / 165', description: 'Pinot Noir, Aloxe-Corton, Premier Cru, Burgundy, France' },
         { name: '2017 Chappellet', price: '18 / 36 / 159', description: 'Cabernet Franc, Pritchard Hill, Napa Valley, USA' },
-        { name: '2021 Cade', price: '22 / 40 / 185', description: 'Cabernet Sauvignon, Howell Mountain, Napa Valley, USA' },
-        { name: '2022 Caymus', price: '19 / 38 / 165', description: 'Cabernet Sauvignon, Napa Valley, USA\n— Caymus and a Burger 49 —' },
       ],
     },
   ],
+  priceFormatNote: 'By the glass pours are 5 oz. Still wines are 5 oz / Carafe / Bottle. No corkage fee on bottle purchases from our collection.',
 }

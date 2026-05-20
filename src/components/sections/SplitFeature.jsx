@@ -6,6 +6,7 @@ export default function SplitFeature({
   reverse = false,
   media,
   children,
+  mobileTitle,
   gridClassName = '',
   mobileMedia = 'stack',
   mobileOrder = 'media-first',
@@ -25,6 +26,9 @@ export default function SplitFeature({
 
   return (
     <Section id={id} className={className}>
+      {mobileTitle && (
+        <div className="md:hidden mb-6 px-6">{mobileTitle}</div>
+      )}
       <div
         className={`grid gap-10 md:grid-cols-2 items-center ${gridClassName} ${mobileOrderClass} ${desktopReverseClass}`}
       >

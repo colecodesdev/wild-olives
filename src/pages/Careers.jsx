@@ -25,20 +25,22 @@ export default function Careers() {
       </ContentBanner>
 
       <CenteredInfoBlock id="work-with-us" title="Work With Us" dividerWidth="w-[250px] md:w-[520px]">
-        <p className={`max-w-3xl mx-6 md:mx-auto ${proseClass}`}>
+        <p className={`max-w-3xl mx-auto ${proseClass}`}>
           Be part of something special at one of the best restaurants on 30A! We’re hiring
           passionate team members who love great food, exceptional service, and a dynamic work
           environment.
         </p>
 
-        <LogoDivider />
+        <LogoDivider className="my-10" />
 
         <div className="mt-14">
           <CareersForm />
         </div>
       </CenteredInfoBlock>
 
-      <CorkBanner image={chefCooking} backgroundClassName="bg-[position:40%]" />
+      <div className="hidden md:block">
+        <CorkBanner image={chefCooking} backgroundClassName="bg-[position:40%]" />
+      </div>
     </>
   )
 }

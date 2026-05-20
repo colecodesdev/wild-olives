@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import Divider from '../ui/Divider'
+import ButtonLink from '../ui/ButtonLink'
+import { useReservation } from '../../contexts/ReservationContext'
 
 export default function Footer() {
+  const { open: openReservation } = useReservation()
   return (
     <footer className="bg-white py-20">
       <div className="w-full px-6 md:px-28">
@@ -10,23 +13,35 @@ export default function Footer() {
           <div className="flex items-center justify-center gap-8">
             <Divider width="flex-1" className="border-black/60" />
 
-            <div className="flex items-center gap-4">
-              <a href="https://x.com/wildoliveswcb" target="_blank" rel="noreferrer">
-                <div className="h-10 w-10 rounded-full bg-black flex items-center justify-center hover:bg-gray-600 transition-colors duration-200">
-                  <span className="text-white text-lg font-semibold">X</span>
-                </div>
+            <div className="flex items-center gap-6">
+              <a
+                href="https://x.com/wildoliveswcb"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="X"
+                className="text-black hover:text-gray-600 transition-colors text-lg md:text-xl font-semibold"
+              >
+                X
               </a>
 
-              <a href="https://instagram.com/wildolives30a" target="_blank" rel="noreferrer">
-                <div className="h-10 w-10 rounded-full bg-black flex items-center justify-center hover:bg-gray-600 transition-colors duration-200">
-                  <i className="fa-brands fa-instagram text-white text-lg" />
-                </div>
+              <a
+                href="https://instagram.com/wildolives30a"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="text-black hover:text-gray-600 transition-colors"
+              >
+                <i className="fa-brands fa-instagram text-xl md:text-2xl" />
               </a>
 
-              <a href="https://facebook.com/wildolives30a" target="_blank" rel="noreferrer">
-                <div className="h-10 w-10 rounded-full bg-black flex items-center justify-center hover:bg-gray-600 transition-colors duration-200">
-                  <i className="fa-brands fa-facebook-f text-white text-lg" />
-                </div>
+              <a
+                href="https://facebook.com/wildolives30a"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="text-black hover:text-gray-600 transition-colors"
+              >
+                <i className="fa-brands fa-facebook-f text-xl md:text-2xl" />
               </a>
             </div>
 
@@ -50,13 +65,18 @@ export default function Footer() {
               </div>
             </div>
 
+            <div className="flex flex-col items-center md:hidden mt-2">
+              <ButtonLink onClick={openReservation}>Make a Reservation</ButtonLink>
+            </div>
+
             <div className="text-left md:text-right uppercase font-raleway tracking-widest font-medium text-sm space-y-3 hidden md:block">
-              <NavLink
-                to="/reservations"
-                className="text-black hover:text-gray-600 transition-colors duration-200 block"
+              <button
+                type="button"
+                onClick={openReservation}
+                className="text-black hover:text-gray-600 transition-colors duration-200 block uppercase font-raleway tracking-widest font-medium text-sm"
               >
                 Reservations
-              </NavLink>
+              </button>
 
               <NavLink
                 to="/contact"

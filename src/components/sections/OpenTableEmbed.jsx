@@ -2,6 +2,7 @@ export default function OpenTableEmbed({
   src,
   title = 'OpenTable Reservations',
   className = '',
+  heightClass = 'h-[600px]',
 }) {
   return (
     <div className={`w-full ${className}`}>
@@ -9,7 +10,7 @@ export default function OpenTableEmbed({
         <iframe
           src={src}
           title={title}
-          className="w-full h-[600px]"
+          className={`w-full block ${heightClass}`}
           frameBorder="0"
           allow="payment"
         />

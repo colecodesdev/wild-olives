@@ -2,9 +2,12 @@ import { useEffect } from 'react'
 import { useLocation, Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import ReservationModal from '../sections/ReservationModal'
+import { ReservationProvider, useReservation } from '../../contexts/ReservationContext'
 
-export default function MainLayout() {
+function LayoutShell() {
   const { pathname } = useLocation()
+  const { isOpen, close } = useReservation()
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -15,10 +18,19 @@ export default function MainLayout() {
   return (
     <>
       <Navbar />
-      <main className={isHome ? '' : 'pt-28'}>
+      <main className={isHome ? '' : 'pt-20'}>
         <Outlet />
       </main>
-      <Footer />
+      {isHome ? null : <Footer />}
+      <ReservationModal isOpen={isOpen} onClose={close} />
     </>
+  )
+}
+
+export default function MainLayout() {
+  return (
+    <ReservationProvider>
+      <LayoutShell />
+    </ReservationProvider>
   )
 }

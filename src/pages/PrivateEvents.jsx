@@ -29,20 +29,22 @@ export default function PrivateEvents() {
         title="The State Room"
         dividerWidth="w-[250px] md:w-[520px]"
       >
-        <p className={`max-w-3xl mx-6 md:mx-auto ${proseClass}`}>
+        <p className={`max-w-3xl mx-auto ${proseClass}`}>
           Welcome to The State Room, our exclusive private dining space at Wild Olives. Hosting up
           to 32 guests, it’s the ideal venue for special occasions, corporate events, and
           celebrations. Secure your spot today and see why we’re a favorite among 30A restaurants.
         </p>
 
-        <LogoDivider />
+        <LogoDivider className="my-10" />
 
         <div className="mt-14">
           <PrivateEventsForm />
         </div>
       </CenteredInfoBlock>
 
-      <CorkBanner image={bottlesStatue} backgroundClassName="bg-bottom" />
+      <div className="hidden md:block">
+        <CorkBanner image={bottlesStatue} backgroundClassName="bg-bottom" />
+      </div>
     </>
   )
 }
