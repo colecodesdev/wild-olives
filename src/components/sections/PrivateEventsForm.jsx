@@ -1,4 +1,5 @@
 import { useId, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import ButtonLink from '../ui/ButtonLink'
 
 const months = [
@@ -16,6 +17,8 @@ const DEFAULT_EVENT_STYLES = [
   'Other',
 ]
 
+const currentYear = new Date().getFullYear()
+
 export default function PrivateEventsForm({
   className = '',
   onSubmit,
@@ -24,6 +27,7 @@ export default function PrivateEventsForm({
   const styles = eventStyleOptions ?? DEFAULT_EVENT_STYLES
   const idPrefix = useId()
   const fieldId = (name) => `${idPrefix}-${name}`
+  const navigate = useNavigate()
 
   const [form, setForm] = useState({
     firstName: '',
@@ -31,11 +35,11 @@ export default function PrivateEventsForm({
     email: '',
     phone: '',
     eventStyle: '',
+    eventStyleOther: '',
     guests: '',
     month: '',
     day: '',
     year: '',
-    eventType: '',
     notes: '',
   })
 
@@ -46,13 +50,14 @@ export default function PrivateEventsForm({
   function handleSubmit(e) {
     e.preventDefault()
     if (onSubmit) onSubmit(form)
+    navigate('/')
   }
 
   const inputBase =
-    'w-full border border-black/30 px-4 py-3 text-sm tracking-widest font-montserrat focus:outline-none focus:ring-0'
+    'w-full border border-black/30 px-4 py-3 text-sm tracking-widest font-montserrat focus:outline-none focus:ring-2 focus:ring-black/50 focus:border-black'
 
   const labelBase =
-    'block mb-2 text-left text-xs font-medium uppercase tracking-[0.3em] font-raleway'
+    'block mb-2 text-left text-xs font-semibold uppercase tracking-[0.3em] font-raleway'
 
   return (
     <form onSubmit={handleSubmit} className={`max-w-3xl mx-auto ${className}`}>
@@ -116,7 +121,7 @@ export default function PrivateEventsForm({
             onChange={(e) => update('eventStyle', e.target.value)}
             required
           >
-            <option value="" />
+            <option value="">Select...</option>
             {styles.map((s) => (
               <option key={s} value={s}>
                 {s}
@@ -130,12 +135,30 @@ export default function PrivateEventsForm({
           <input
             id={fieldId('guests')}
             className={inputBase}
+            type="number"
+            min="1"
+            max="32"
             inputMode="numeric"
             value={form.guests}
             onChange={(e) => update('guests', e.target.value)}
             required
           />
         </div>
+
+        {form.eventStyle === 'Other' && (
+          <div className="md:col-span-2">
+            <label htmlFor={fieldId('eventStyleOther')} className={labelBase}>
+              Please specify
+            </label>
+            <input
+              id={fieldId('eventStyleOther')}
+              className={inputBase}
+              value={form.eventStyleOther}
+              onChange={(e) => update('eventStyleOther', e.target.value)}
+              required
+            />
+          </div>
+        )}
 
         <div>
           <label htmlFor={fieldId('month')} className={labelBase}>Month</label>
@@ -146,7 +169,7 @@ export default function PrivateEventsForm({
             onChange={(e) => update('month', e.target.value)}
             required
           >
-            <option value="" />
+            <option value="">Select...</option>
             {months.map((m) => (
               <option key={m} value={m}>
                 {m}
@@ -155,41 +178,38 @@ export default function PrivateEventsForm({
           </select>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:col-span-1">
+        <div className="grid grid-cols-2 gap-5">
           <div>
             <label htmlFor={fieldId('day')} className={labelBase}>Day</label>
             <input
               id={fieldId('day')}
               className={inputBase}
+              type="number"
+              min="1"
+              max="31"
               inputMode="numeric"
+              placeholder="DD"
               value={form.day}
               onChange={(e) => update('day', e.target.value)}
               required
             />
           </div>
 
-          <div className="col-span-1 md:col-span-2">
+          <div>
             <label htmlFor={fieldId('year')} className={labelBase}>Year</label>
             <input
               id={fieldId('year')}
               className={inputBase}
+              type="number"
+              min={currentYear}
+              max={currentYear + 3}
               inputMode="numeric"
+              placeholder="YYYY"
               value={form.year}
               onChange={(e) => update('year', e.target.value)}
               required
             />
           </div>
-        </div>
-
-        <div className="md:col-span-2">
-          <label htmlFor={fieldId('eventType')} className={labelBase}>What kind of event? (Birthday, Wedding, etc.)</label>
-          <input
-            id={fieldId('eventType')}
-            className={inputBase}
-            value={form.eventType}
-            onChange={(e) => update('eventType', e.target.value)}
-            required
-          />
         </div>
 
         <div className="md:col-span-2">
@@ -205,9 +225,11 @@ export default function PrivateEventsForm({
         </div>
       </div>
 
-      <ButtonLink type="submit" className="mt-6">
-        Submit Form
-      </ButtonLink>
+      <div className="flex justify-center mt-8">
+        <ButtonLink type="submit">
+          Submit Form
+        </ButtonLink>
+      </div>
     </form>
   )
 }

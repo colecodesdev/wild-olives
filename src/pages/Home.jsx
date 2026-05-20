@@ -1,151 +1,92 @@
-import Container from '../components/ui/Container'
-import Heading from '../components/ui/Heading'
-import Divider from '../components/ui/Divider'
-import ButtonLink from '../components/ui/ButtonLink'
-import ImageTile from '../components/ui/ImageTile'
-import LogoDivider from '../components/ui/LogoDivider'
-import logo from '../assets/logos/logo.png'
-import crazyView from '../assets/images/home/crazy-view.jpg'
-import cheers from '../assets/images/home/cheers.jpg'
-import bigCheeseboard from '../assets/images/home/big-cheeseboard.JPG'
-import chablis from '../assets/images/home/97-chablis.jpg'
-import cheersNew from '../assets/images/home/cheers-new.jpg'
-import chrisAndSlayde from '../assets/images/home/chris-and-slayde.JPG'
-import pancakesEspresso from '../assets/images/home/pancakes-espresso.jpg'
-import woBarrel from '../assets/images/home/wo-barrel.jpg'
-import baconDrink from '../assets/images/home/bacon-drink.jpg'
-import fallHours from '../assets/images/home/fall-hours.jpg'
-import bottleRack from '../assets/images/home/bottle-rack.jpg'
-import ParallaxBanner from '../components/ui/ParallaxBanner'
-import corks from '../assets/images/home/corks_unedited.jpg'
-import liquorBg from '../assets/images/home/liquor-wall.jpg'
-import cazcanes from '../assets/images/home/cazcanes.jpg'
-import PrivateEvents from '../components/sections/PrivateEvents'
+import heroImage from '../assets/images/home/home-hero-cropped.jpg'
 import HeroTitle from '../components/ui/HeroTitle'
-import ContentBanner from '../components/ui/ContentBanner'
-import CorkBanner from '../components/sections/CorkBanner'
-import SplitFeature from '../components/sections/SplitFeature'
-import Gallery from '../components/sections/Gallery'
-import SocialGrid from '../components/sections/SocialGrid'
-import CenteredInfoBlock from '../components/sections/CenteredInfoBlock'
-import { sectionTitleClass, proseClass } from '../lib/typography'
+import Divider from '../components/ui/Divider'
 
 export default function Home() {
   return (
-    <>
-      <ParallaxBanner
-        image={crazyView}
-        alt="Coastal view from the Wild Olives bistro"
-        priority
-        heightClass="h-svh md:h-screen"
-        overlayClassName="bg-black/30"
-      >
-        <Container>
-          <HeroTitle
-            title="Wild Olives"
-            subtitle="Bistro • Wine • Craft Cocktails"
-          />
-        </Container>
-      </ParallaxBanner>
+    <div className="relative h-svh w-full overflow-hidden">
+      <img
+        src={heroImage}
+        alt="Wild Olives interior"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/70" />
+      <div
+        className="absolute inset-0 opacity-[0.18] mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+        }}
+      />
 
-      <CenteredInfoBlock
-        id="hours"
-        title={
-          <>
-            HOURS &<br />LOCATION
-          </>
-        }
-        topContent={
-          <div className="uppercase text-sm md:text-base font-light tracking-widest">
-            4771 E County Hwy 30A Unit C 103<br /> Santa Rosa Beach, FL 32459
+      <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 pt-28 pb-64">
+        <HeroTitle
+          title="Wild Olives"
+          subtitle="Bistro • Wine • Craft Cocktails"
+          className="flex flex-col items-center text-center"
+          titleClassName="text-6xl md:text-8xl"
+          subtitleClassName="text-sm md:text-2xl"
+        />
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 z-20 px-6 md:px-28 pb-8 md:pb-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 text-white mb-8">
+          <div className="order-2 md:order-1 text-center md:text-left uppercase tracking-widest text-sm leading-6">
+            <div className="font-raleway font-semibold mb-1">Find Us</div>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=4771+E+County+Hwy+30A+Unit+C+103+Santa+Rosa+Beach+FL+32459"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white/80 transition-colors"
+            >
+              4771 E County Hwy 30A, Unit C 103, Santa Rosa Beach, FL 32459
+            </a>
           </div>
-        }
-        primaryCta={<ButtonLink to="/reservations" className="mt-6">Reservations</ButtonLink>}
-        middleBrand={<LogoDivider />}
-        bottomContent={
-          <>
-            <div className="flex justify-center space-x-20">
-              <div className="flex flex-col text-center">
-                <div className="text-2xl uppercase tracking-widest font-raleway">
-                  Open Daily
-                </div>
-                <Divider width="w-[130px]" className='my-2'/>
-                <div className="text-base font-light tracking-widest">4PM - 10PM</div>
-              </div>
-            </div>
 
-            <div className="flex flex-col items-center gap-3 mt-6">
-              <ButtonLink to="/menu">Menu</ButtonLink>
-            </div>
-          </>
-        }>
-      </CenteredInfoBlock>
-
-      <CorkBanner image={corks} heightClass="h-[500px]" />
-
-      <PrivateEvents />
-
-      <Gallery
-        id="gallery"
-        rows={[
-          {
-            images: [cheers, chablis, cheersNew],
-            cols: 3,
-          },
-          {
-            images: [bigCheeseboard, cazcanes],
-            cols: 2,
-          },
-        ]}
-      >
-      </Gallery>
-
-      <SplitFeature
-        id="stay-wild"
-        mobileMedia="hide"
-        media={
-          <ImageTile
-            src={chrisAndSlayde}
-            className="h-[600px] rounded-r-sm"
-            zoom={false}
-          />
-        }
-      >
-        <div className="text-center px-6 md:px-28">
-          <Heading as="h2" className={sectionTitleClass}>
-            Stay Wild
-          </Heading>
-
-          <Divider className="my-4" width="w-[250px] md:w-[400px]" />
-
-          <p className={`mb-7 px-6 md:px-24 md:text-md ${proseClass}`}>
-            Chef Chris Trovas brings you Wild Olives Bistro on 30a. Everything from our wine selection, cocktails, and ambiance will remind you of your favorite old-world travels and the updated amenities of the new world. We can’t wait to welcome you into our kitchen. Wild Olives has always been like entering the home of the Trovas family. Think of this as the same homey, familial experience, with a renovation!
-          </p>
-
-          <img src={logo} alt="Wild Olives Logo" className="h-16 md:h-24 w-auto mx-auto" />
+          <div className="order-1 md:order-2 text-center md:text-right uppercase tracking-widest text-sm leading-6">
+            <div className="font-raleway font-semibold mb-1">Open Daily</div>
+            2 PM – 10 PM
+          </div>
         </div>
-      </SplitFeature>
 
-      <ContentBanner image={liquorBg}>
-        <div className="text-center px-6">
-          <h2
-            className="text-white font-raleway font-semibold italic leading-loose text-3xl md:text-5xl md:w-[1050px] tracking-wide"
-            style={{
-              textShadow:
-                'rgba(0, 0, 0, 0.5) -1px -1px 0px, rgba(0, 0, 0, 0.5) -1px 1px 0px, rgba(0, 0, 0, 0.5) 1px 1px 0px, rgba(0, 0, 0, 0.5) 1px -1px 0px',
-            }}
-          >
-            "A little more than enough to drink;<br />for thirst is a dangerous thing.”
-          </h2>
+        <div className="flex items-center justify-center gap-6 md:gap-8">
+          <Divider width="flex-1" className="border-white/60" />
+
+          <div className="flex items-center gap-6">
+            <a
+              href="https://x.com/wildoliveswcb"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="X"
+              className="text-white/90 hover:text-white transition-colors text-lg md:text-xl font-semibold"
+            >
+              X
+            </a>
+
+            <a
+              href="https://instagram.com/wildolives30a"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="text-white/90 hover:text-white transition-colors"
+            >
+              <i className="fa-brands fa-instagram text-xl md:text-2xl" />
+            </a>
+
+            <a
+              href="https://facebook.com/wildolives30a"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="text-white/90 hover:text-white transition-colors"
+            >
+              <i className="fa-brands fa-facebook-f text-xl md:text-2xl" />
+            </a>
+          </div>
+
+          <Divider width="flex-1" className="border-white/60" />
         </div>
-      </ContentBanner>
-
-      <SocialGrid
-        id="follow-us"
-        profileUrl="https://instagram.com/wildolives30a"
-        handleText="@wildolives30a"
-        images={[pancakesEspresso, woBarrel, baconDrink, fallHours, bottleRack]}
-      ></SocialGrid>
-    </>
+      </div>
+    </div>
   )
 }

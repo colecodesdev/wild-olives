@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Container from '../components/ui/Container'
 import ContentBanner from '../components/ui/ContentBanner'
 import PageHeroTitle from '../components/ui/PageHeroTitle'
@@ -5,11 +6,14 @@ import CenteredInfoBlock from '../components/sections/CenteredInfoBlock'
 import ButtonLink from '../components/ui/ButtonLink'
 import Divider from '../components/ui/Divider'
 import GoogleMapEmbed from '../components/sections/GoogleMapEmbed'
+import ReservationModal from '../components/sections/ReservationModal'
 import { proseClass } from '../lib/typography'
 
 import contactHero from '../assets/images/contact/contact-hero.jpg'
 
 export default function Contact() {
+  const [isResOpen, setIsResOpen] = useState(false)
+
   return (
     <>
       <ContentBanner
@@ -50,7 +54,7 @@ export default function Contact() {
         }
         primaryCta={
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <ButtonLink to="/reservations">Reservations</ButtonLink>
+            <ButtonLink onClick={() => setIsResOpen(true)}>Reservations</ButtonLink>
             <ButtonLink to="/private-events">Private Events</ButtonLink>
           </div>
         }
@@ -58,6 +62,8 @@ export default function Contact() {
       </CenteredInfoBlock>
 
       <GoogleMapEmbed />
+
+      <ReservationModal isOpen={isResOpen} onClose={() => setIsResOpen(false)} />
     </>
   )
 }

@@ -1,11 +1,12 @@
 import { useId, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import ButtonLink, { buttonLinkBase } from '../ui/ButtonLink'
 
 const inputClassName =
-  'w-full border border-black/40 px-5 py-3 text-sm tracking-widest text-black/70 font-montserrat placeholder-black/40 focus:outline-none focus:border-black'
+  'w-full border border-black/30 px-4 py-3 text-sm tracking-widest font-montserrat placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/50 focus:border-black'
 
 const labelClassName =
-  'block mb-2 text-left text-xs font-medium uppercase tracking-[0.3em] font-raleway'
+  'block mb-2 text-left text-xs font-semibold uppercase tracking-[0.3em] font-raleway'
 
 const fields = [
   { name: 'firstName', label: 'First name', type: 'text', required: true, autoComplete: 'given-name' },
@@ -18,18 +19,24 @@ const fields = [
   { name: 'zip', label: 'Zip code', type: 'text', required: true, autoComplete: 'postal-code' },
   { name: 'employer', label: 'Most recent employer', type: 'text', required: false, wrapperClassName: 'md:col-span-2' },
   { name: 'position', label: 'Position held', type: 'text', required: false, wrapperClassName: 'md:col-span-2' },
-  { name: 'startDate', label: 'Start date [MM/YY]', type: 'text', required: false },
-  { name: 'endDate', label: 'End date [MM/YY]', type: 'text', required: false },
+  { name: 'startDate', label: 'Start date', type: 'text', required: false, placeholder: 'MM/YY' },
+  { name: 'endDate', label: 'End date', type: 'text', required: false, placeholder: 'MM/YY' },
 ]
 
 export default function CareersForm() {
   const resumeId = useId()
   const [resumeName, setResumeName] = useState('')
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    navigate('/')
+  }
 
   return (
-    <form className="max-w-3xl mx-auto">
+    <form className="max-w-3xl mx-auto" onSubmit={handleSubmit}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {fields.map(({ name, label, type, required, autoComplete, wrapperClassName }) => {
+        {fields.map(({ name, label, type, required, autoComplete, wrapperClassName, placeholder }) => {
           const inputId = `careers-${name}`
           return (
             <div key={name} className={wrapperClassName}>
@@ -43,6 +50,7 @@ export default function CareersForm() {
                 type={type}
                 required={required}
                 autoComplete={autoComplete}
+                placeholder={placeholder}
               />
             </div>
           )
@@ -92,7 +100,7 @@ export default function CareersForm() {
 
         </div>
 
-        <ButtonLink to="/closed">Submit Application</ButtonLink>
+        <ButtonLink type="submit">Submit Application</ButtonLink>
 
       </div>
     </form>

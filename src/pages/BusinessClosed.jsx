@@ -32,14 +32,6 @@ export default function BusinessClosed() {
             concluded here.
           </p>
 
-          <p>
-            For employers and interviewers, this page represents the end of the
-            application's real-world workflow. The project demonstrates component
-            based architecture, client-side routing, responsive layout
-            composition, and the process of translating an existing business
-            website into a maintainable React application.
-          </p>
-
         </div>
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
